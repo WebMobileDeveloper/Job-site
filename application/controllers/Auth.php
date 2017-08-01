@@ -8,30 +8,26 @@ class Auth extends Front_Controller {
         parent::__construct();
     }
 
-    public function index($user_type='post') {
-        $data['user_type']=$user_type;
-        $param = $this->uri->rsegment(4);
-        if ($param == "register") {
-            $this->load->view('auth/signup');
-        }
-
-        $this->front_showpage('auth/login',$data);
+    public function index() {
+        $this->front_showpage('Post/auth/login');
+    }
+    public function register() {
+        $this->front_showpage('Post/auth/signup');
     }
 
-    public function login($type) {
+    public function login() {
         $email = $this->input->post("email");
         $password = md5($this->input->post("password"));
         $this->db->select("*");
         $this->db->where('email_address', $email);
         $this->db->where('password', $password);
-        $this->db->from('users');
+        $this->db->from('users_job_client');
         $query = $this->db->get();
         $users = $query->result();
 
         if (count($users) > 0) {
             $login_user_id = $users[0]->id;
-            $this->session->set_userdata('login_user_id', $login_user_id);
-            $this->session->set_userdata($type."_user_id", $login_user_id);
+            $this->session->set_userdata('login_job_client_id', $login_user_id);
             $this->session->set_userdata('login_user_name', $users[0]->fullname);
             $this->session->set_userdata('login_user_email', $users[0]->email_address);
             $result['status'] = "ok";
@@ -50,7 +46,7 @@ class Auth extends Front_Controller {
         $email = $this->input->post("email");
         $this->db->select("*");
         $this->db->where('email_address', $email);
-        $this->db->from('users');
+        $this->db->from('users_job_client');
         $query = $this->db->get();
         $users = $query->result();
         if (count($users) > 0) {
@@ -71,18 +67,18 @@ class Auth extends Front_Controller {
             'email_address' => $email,
             'password' => md5($password)
         );
-        $result = $this->db->insert('users', $input_user_data);
+        $result = $this->db->insert('users_job_client', $input_user_data);
         if ($result) {
-            redirect("auth");
+            redirect("job/post");
         }
     }
 
     public function signout() {
-        $this->session->unset_userdata('login_user_id');
+        $this->session->unset_userdata('login_job_client_id');
         $this->session->unset_userdata('login_user_name');
         $this->session->unset_userdata('login_user_email');
         $this->session->unset_userdata('company_id');
-        redirect("auth");
+        redirect("home");
     }
 
 }
