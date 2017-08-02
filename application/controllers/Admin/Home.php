@@ -12,7 +12,7 @@ class Home extends CI_Controller {
     }
 
     public function index() {
-        $login_user_id = $this->session->userdata('login_user_id');
+        $login_user_id = $this->session->userdata('login_admin_id');
 //        var_dump($login_user_id);exit;
         if ($login_user_id == "") {
             redirect("admin/auth");

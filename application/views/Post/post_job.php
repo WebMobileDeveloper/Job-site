@@ -28,13 +28,22 @@
                     <form class="row" id="post_job" action="" method="post">
                         <div class="col-md-6 col-sm-6 ceol-xs-12">
                             <div class="form-group">
-                                <label>Job Title<span style="color:red;">&emsp;(*)</span></label>
+                                <label>Job Title<span style="color:red;">&emsp;*</span></label>
                                 <input type="text" placeholder="Job Title" name="title" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6  col-sm-6 ceol-xs-12">
+                            <div class="form-group">
+                                <label>Expire Date<span style="color:red;">&emsp;*</span></label>
+                                <div class="input-group date" id="datetimepicker1">
+                                    <span class="input-group-addon"> <span class="glyphicon glyphicon-calendar"></span> </span>
+                                    <input type="text" class="form-control" name="date"  placeholder="Select Expire Date"/>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="form-group">
-                                <label>Location</label>
+                                <label>Country</label>
                                 <select name="location" class="questions-location form-control">
                                     <?php
                                     $i=0;
@@ -46,10 +55,16 @@
                         </div>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="form-group">
-                                <label>Job Category<span style="color:red;">&emsp;(*)</span></label>
+                                <label>City<span style="color:red;">&emsp;*</span></label>
+                                <input type="text" placeholder="City" name="city" class="form-control">
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                <label>Job Category<span style="color:red;">&emsp;*</span></label>
                                 <select class="questions-category form-control" name="category[]" multiple="multiple">
-                                    <?php
-                                    $i=0;
+                                    <?php $i=0;
                                     foreach ($categories as $category){ ?>
                                         <option value="<?php echo $i++;?>"><?php echo $category;?></option>
                                     <?php }?>
@@ -60,10 +75,10 @@
                             <div class="form-group">
                                 <label>Job Type</label>
                                 <select name="job_type" class="questions-type form-control" >
-                                    <option value="0">Full Time</option>
-                                    <option value="1">Part Time</option>
-                                    <option value="2">Remote</option>
-                                    <option value="3">Freelancer</option>
+                                    <?php $i=0;
+                                    foreach ($job_types as $type){ ?>
+                                        <option value="<?php echo $i++;?>"><?php echo $type;?></option>
+                                    <?php }?>
                                 </select>
                             </div>
                         </div>
@@ -84,22 +99,13 @@
                         </div>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="form-group">
-                                <label>Expected Salary</label>
-                                <select name="Salary" class="questions-salary form-control">
-                                    <option value="0">Less than 10,000</option>
-                                    <option value="1">10,000 +</option>
-                                    <option value="2">20,000 +</option>
-                                    <option value="3">30,000 +</option>
-                                    <option value="1">40,000 +</option>
-                                    <option value="2">50,000 +</option>
-                                    <option value="3">100,000 +</option>
-                                    <option value="3">Negotiable</option>
-                                </select>
+                                <label>Expected Price<span style="color:red;">&emsp;*</span></label>
+                                <input type="number" placeholder="Expected Price($/month)" name="price" class="form-control" value="1000" step="10">
                             </div>
                         </div>
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group">
-                                <label>Tags</label>
+                                <label>Required Skill Tags</label>
                                 <input type="text" id="tags" name="tags" value="" class="form-control" data-role="tagsinput">
                             </div>
                         </div>
@@ -121,4 +127,6 @@
         </div>
     </div>
 </section>
+<br><br>
+
 

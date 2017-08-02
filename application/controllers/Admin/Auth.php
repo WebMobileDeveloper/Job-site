@@ -28,7 +28,7 @@ class Auth extends CI_Controller {
 
         if (count($users) > 0) {
             $login_user_id = $users[0]->id;
-            $this->session->set_userdata('login_user_id', $login_user_id);
+            $this->session->set_userdata('login_admin_id', $login_user_id);
             $this->session->set_userdata('login_user_name', $users[0]->fullname);
             $this->session->set_userdata('login_user_email', $users[0]->email_address);
             $result['status'] = "ok";
@@ -75,7 +75,7 @@ class Auth extends CI_Controller {
     }
 
     public function signout() {
-        $this->session->unset_userdata('login_user_id');
+        $this->session->unset_userdata('login_admin_id');
         $this->session->unset_userdata('login_user_name');
         $this->session->unset_userdata('login_user_email');
         $this->session->unset_userdata('company_id');

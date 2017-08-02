@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
     <!--[if IE]>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <![endif]-->
@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="<?php echo ASSETS_ROOT; ?>css/bootstrap.min.css">
 
     <!-- JQUERY SELECT -->
-    <link href="<?php echo ASSETS_ROOT; ?>css/select2.min.css" rel="stylesheet" />
+    <link href="<?php echo ASSETS_ROOT; ?>css/select2.min.css" rel="stylesheet"/>
 
     <!-- JQUERY MENU -->
     <link rel="stylesheet" href="<?php echo ASSETS_ROOT; ?>css/mega_menu.min.css">
@@ -38,6 +38,14 @@
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet" type="text/css">
 
+    <!-- DATE PICKER CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
+    <!-- JAVASCRIPT JS  -->
+    <script type="text/javascript" src="<?php echo ASSETS_ROOT; ?>js/jquery-3.1.1.min.js"></script>
+
+    <!-- JAVASCRIPT JS  -->
+    <script type="text/javascript" src="<?php echo ASSETS_ROOT; ?>js/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="<?php echo ASSETS_ROOT; ?>js/jquery.validate.min.js"></script>
     <!-- JavaScripts -->
     <script src="<?php echo ASSETS_ROOT; ?>js/modernizr.js"></script>
 
@@ -49,30 +57,23 @@
     <![endif]-->
 
 
-    <!-- JAVASCRIPT JS  -->
-    <script type="text/javascript" src="<?php echo ASSETS_ROOT; ?>js/jquery-3.1.1.min.js"></script>
-
-    <!-- JAVASCRIPT JS  -->
-    <script type="text/javascript" src="<?php echo ASSETS_ROOT; ?>js/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript" src="<?php echo ASSETS_ROOT; ?>js/jquery.validate.min.js"></script>
-
 </head>
 <body>
 <div class="page">
     <div id="spinner">
-        <div class="spinner-img"> <img alt="Opportunities Preloader" src="<?php echo ASSETS_ROOT; ?>images/loader.gif" />
+        <div class="spinner-img"><img alt="Opportunities Preloader" src="<?php echo ASSETS_ROOT; ?>images/loader.gif"/>
             <h2>Please Wait.....</h2>
         </div>
     </div>
     <nav id="menu-1" class="mega-menu fa-change-black">
         <section class="menu-list-items container">
             <ul class="menu-logo">
-                <li> <a href="<?php echo site_url("home");?>"> <img src="<?php echo ASSETS_ROOT; ?>images/logo.png" alt="logo" class="img-responsive"> </a> </li>
+                <li><a href="<?php echo site_url("home"); ?>"> <img src="<?php echo ASSETS_ROOT; ?>images/logo.png" alt="logo" class="img-responsive"> </a></li>
             </ul>
             <ul class="menu-links pull-right">
-                <li> <a href="javascript:void(0)"> Home <i class="fa fa-angle-down fa-indicator"></i></a>
+                <li><a href="javascript:void(0)"> Home <i class="fa fa-angle-down fa-indicator"></i></a>
                     <ul class="drop-down-multilevel">
-                        <li><a href="javascript:void(0)">Home Style  <label class="label label-info">New</label> <i class="fa fa-angle-right fa-indicator"></i> </a>
+                        <li><a href="javascript:void(0)">Home Style <label class="label label-info">New</label> <i class="fa fa-angle-right fa-indicator"></i> </a>
                             <ul class="drop-down-multilevel">
                                 <li><a href="index.html"><i class="fa fa-angle-right"></i> Home Default</a></li>
                                 <li><a href="index2.html"><i class="fa fa-angle-right"></i> Home Text Rotator</a></li>
@@ -196,7 +197,7 @@
                                     <li><a href="user-job-applied.html"> <i class="fa fa-angle-right"></i> Job Applied</a></li>
                                     <li><a href="user-resume.html"> <i class="fa fa-angle-right"></i> Use Resume</a></li>
                                     <li><a href="users.html"> <i class="fa fa-angle-right"></i> All Users </a></li>
-                                    <li><a href="user-resume-build.html"> <i class="fa fa-angle-right"></i> Build Resume  <label class="label label-info">New</label></a></li>
+                                    <li><a href="user-resume-build.html"> <i class="fa fa-angle-right"></i> Build Resume <label class="label label-info">New</label></a></li>
                                 </ul>
                             </div>
                             <div class="grid-col-2">
@@ -249,8 +250,24 @@
                         </div>
                     </div>
                 </li>
-                <li class="no-bg"><a href="<?php echo site_url('Job/Post');?>" class="p-job"><i class="fa fa-plus-square"></i> Post a Job</a></li>
-                <li class="no-bg login-btn-no-bg"><a href="" class="login-header-btn"><i class="fa fa-sign-in"></i> Log in</a></li>
+                <?php if (isset($_SESSION['login_user_id'])) {
+                    if ($_SESSION['login_user_type'] == 'job') { ?>
+                        <li class="no-bg"><a href="<?php echo site_url('Job/Post'); ?>" class="p-job"><i class="fa fa-plus-square"></i> Post a Job</a></li>
+                        <li class="profile-pic">
+                            <a href="javascript:void(0)"> <img src="<?php echo ASSETS_ROOT; ?>images/admin.jpg" alt="user-img" class="img-circle" width="36">
+                                <span class="hidden-xs hidden-sm"><?php echo $_SESSION['login_user_name'];?> </span><i class="fa fa-angle-down fa-indicator"></i>
+                            </a>
+                            <ul class="drop-down-multilevel left-side">
+                                <li><a href="<?php echo site_url('Job/Dashboard')?>"><i class="fa fa-user"></i> Dashboard</a></li>
+                                <li><a href="#"><i class="fa fa-mail-forward"></i> Inbox</a></li>
+                                <li><a href="#"><i class="fa fa-gear"></i> Account Setting</a></li>
+                                <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+                            </ul>
+                        </li>
+                    <?php }
+                } else { ?>
+                    <li class="no-bg login-btn-no-bg"><a href="<?php echo site_url('Auth'); ?>" class="login-header-btn"><i class="fa fa-sign-in"></i> Log in</a></li>
+                <?php } ?>
             </ul>
         </section>
     </nav>

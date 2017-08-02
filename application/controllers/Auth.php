@@ -2,6 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 require_once APPPATH . "core/Front_Controller.php";
+
 class Auth extends Front_Controller {
 
     public function __construct() {
@@ -9,10 +10,10 @@ class Auth extends Front_Controller {
     }
 
     public function index() {
-        $this->front_showpage('Post/auth/login');
+        $this->front_showpage('auth/login');
     }
     public function register() {
-        $this->front_showpage('Post/auth/signup');
+        $this->front_showpage('auth/signup');
     }
 
     public function login() {
@@ -27,9 +28,10 @@ class Auth extends Front_Controller {
 
         if (count($users) > 0) {
             $login_user_id = $users[0]->id;
-            $this->session->set_userdata('login_job_client_id', $login_user_id);
+            $this->session->set_userdata('login_user_id', $login_user_id);
             $this->session->set_userdata('login_user_name', $users[0]->fullname);
             $this->session->set_userdata('login_user_email', $users[0]->email_address);
+            $this->session->set_userdata('login_user_type', $users[0]->usertype);
             $result['status'] = "ok";
             $data = array(
                 'logined_date' => date('Y-m-d H:i:s')
@@ -69,12 +71,12 @@ class Auth extends Front_Controller {
         );
         $result = $this->db->insert('users_job_client', $input_user_data);
         if ($result) {
-            redirect("job/post");
+            redirect("home");
         }
     }
 
     public function signout() {
-        $this->session->unset_userdata('login_job_client_id');
+        $this->session->unset_userdata('login_user_id');
         $this->session->unset_userdata('login_user_name');
         $this->session->unset_userdata('login_user_email');
         $this->session->unset_userdata('company_id');

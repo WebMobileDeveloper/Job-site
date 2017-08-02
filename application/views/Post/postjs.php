@@ -4,7 +4,12 @@
 
 <!-- FOR THIS PAGE ONLY -->
 <script type="text/javascript" src="<?php echo ASSETS_ROOT;?>js/jquery.tagsinput.min.js"></script>
+
+
+
 <script type="text/javascript">
+
+
     $(".questions-category").select2({
         placeholder: "Select Post Category",
         allowClear: true,
@@ -23,26 +28,29 @@
     $(".questions-type").select2({
         placeholder: "Select Job type",
     });
-    $(".questions-salary").select2({
-        placeholder: "Select Job type",
-    });
     $('#tags').tagsInput({
         width: 'auto'
     });
     $(function () {
+        $('#datetimepicker1').datetimepicker({
+            format: 'YYYY/MM/DD'
+        });
+
         $("#publish_job").click(function () {
             $("#post_job").validate({
                 rules: {
                     title: "required",
                     location: "required",
+                    city: "required",
                     "category[]": "required",
                     job_type: "required",
                     experience: "required",
                     Salary: "required",
                     tags: "required",
+                    price: "required",
+                    date: "required",
                 },
                 errorPlacement: function (error, element) {
-                    console.log(element.attr('name'));
                 }
 
             });
@@ -76,5 +84,6 @@
 <!-- CK-EDITOR -->
 <script src="http://cdn.ckeditor.com/4.5.10/standard/ckeditor.js"></script>
 <script type="text/javascript">
+
     CKEDITOR.replace('ckeditor');
 </script>

@@ -127,8 +127,15 @@
 <!-- Owl Carousel -->
 <script type="text/javascript" src="<?php echo ASSETS_ROOT; ?>js/owl-carousel.js"></script>
 
+<!-- DATE AND TIME PICKER -->
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.0.0/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.4.0/lang/en-gb.js"></script>
+
 <!-- CORE JS -->
 <script type="text/javascript" src="<?php echo ASSETS_ROOT; ?>js/custom.js"></script>
+
+
 </div>
 </body>
 </html>

@@ -13,14 +13,9 @@ class Home extends Front_Controller {
     }
 
     public function index() {
-        /*$login_user_id = $this->session->userdata('login_user_id');
-
-        if ($login_user_id == "") {
-            redirect("auth");
-        } else {
-            $this->load->view('home');
-        }*/
-        $this->front_showpage('home');
+        $this->load->model('Post/PostModel');
+        $data['postData']=$this->PostModel->getAllPost();
+        $this->front_showpage('home',$data);
     }
 
 }
