@@ -30,6 +30,13 @@ class CustomerDashboard extends Front_Controller
         $this->front_showpage('customer/user_dashboard', $this->data);
     }
 
+    public function resume()
+    {
+        $this->data['selected_menu'] = 'My Resumes';
+        $this->data['title'] = 'My Resumes';
+        $this->front_showpage('customer/user_dashboard', $this->data);
+    }
+
     public function save_image($type, $id)
     {
         $target_dir = APPPATH . "../assets/front/profile image/client/" . $type . "/";

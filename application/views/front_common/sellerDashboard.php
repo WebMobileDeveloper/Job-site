@@ -45,23 +45,23 @@
                                 <li <?php echo ($selected_menu == 'Edit Profile') ? "class='active'" : ""; ?>>
                                     <a href="<?php echo site_url('home/sellerDashboard/edit'); ?>"> <i class="fa fa-edit"></i> Account Setting</a>
                                 </li>
-                                <li <?php echo ($selected_menu == 'Resume') ? "class='active'" : ""; ?>>
-                                    <a href="<?php echo site_url('home/sellerDashboard/resume'); ?>"> <i class="fa fa-file-o"></i>Resume </a>
+                                <!--<li < ?php /*echo ($selected_menu == 'Resume') ? "class='active'" : ""; */?>>
+                                    <a href="< ?php /*echo site_url('home/sellerDashboard/resume'); */?>"> <i class="fa fa-file-o"></i>Resume </a>
                                 </li>
-                                <li <?php echo ($selected_menu == 'active_posts') ? "class='active'" : ""; ?>>
-                                    <a href="<?php echo site_url('home/sellerDashboard/actived'); ?>"> <i class="fa  fa-list-ul"></i> Active Jobs</a>
+                                <li < ?php /*echo ($selected_menu == 'active_posts') ? "class='active'" : ""; */?>>
+                                    <a href="< ?php /*echo site_url('home/sellerDashboard/actived'); */?>"> <i class="fa  fa-list-ul"></i> Active Jobs</a>
                                 </li>
-                                <li <?php echo ($selected_menu == 'featured_posts') ? "class='active'" : ""; ?>>
-                                    <a href="<?php echo site_url('home/sellerDashboard/featured'); ?>"> <i class="fa  fa-list-alt"></i> Featured Jobs</a>
-                                </li>
-                                <!--<li <?php /*echo ($selected_menu == 'followers') ? "class='active'" : ""; */ ?>>
-                                    <a href="<?php /*echo site_url('job/dashboard/followers'); */ ?>"> <i class="fa  fa-bookmark-o"></i> Followers </a>
+                                <li < ?php /*echo ($selected_menu == 'featured_posts') ? "class='active'" : ""; */?>>
+                                    <a href="< ?php /*echo site_url('home/sellerDashboard/featured'); */?>"> <i class="fa  fa-list-alt"></i> Featured Jobs</a>
+                                </li>-->
+                                <!--<li < ?php /*echo ($selected_menu == 'followers') ? "class='active'" : ""; */ ?>>
+                                    <a href="< ?php /*echo site_url('job/dashboard/followers'); */ ?>"> <i class="fa  fa-bookmark-o"></i> Followers </a>
                                 </li>-->
                             </ul>
                         </div>
                     </div>
                 </div>
-                <?php include("SellerRight" . $selected_menu . ".php"); ?>
+                <?php include("sellerRight" . $selected_menu . ".php"); ?>
             </div>
         </div>
     </div>

@@ -2,13 +2,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-sm-7 co-xs-12 text-left">
-                <h3>Registration Step 2</h3>
+                <h3>Registration Step 1</h3>
             </div>
             <div class="col-md-6 col-sm-5 co-xs-12 text-right">
                 <div class="bread">
                     <ol class="breadcrumb">
                         <li><a href="#">Home</a></li>
-                        <li class="active">Registeration step 2</li>
+                        <li class="active">Registeration step 1</li>
                     </ol>
                 </div>
             </div>
@@ -17,12 +17,70 @@
 </section>
 <section class="login-page-2 parallex register-2">
     <div class="container">
-        <div class="row">
+        <div class="row" style="text-align: center; color:white;">
+
+
             <div class="col-md-12 col-sm-12 col-xs-12">
-                <form action="<?php echo site_url("auth/signup"); ?>" id="signupform" method="post">
+                <div class="Heading-title white">
+                    <h2>Let's get started! </h2>
+                    <h2> First, tell us what you're looking for.</h2>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12" style="min-height:500px;">
+                <style>
+                    blockquote {
+                        min-height: 100px;
+                        border-left:none;
+                    }
+                    blockquote.left-white {
+                        border-left:solid 2px white;
+                    }
+
+                </style>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="testimonial text-center">
+                        <div class="testimonial-image"><img src="<?php echo ASSETS_ROOT ?>images/login/4.png" alt="Jane Doe" title="Jane Doe" class="img-circle img-responsive"></div>
+                        <h3>Company Account</h3>
+                        <div class="separator"></div>
+                        <div class="testimonial-body">
+                            <blockquote>
+                                <h4>I want to find a Customer.</h4>
+                            </blockquote>
+                            <a href="<?php echo site_url('auth/register/customer');?>" class="btn btn-default"> Sign Up</i> </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="testimonial text-center">
+                        <div class="testimonial-image"><img src="<?php echo ASSETS_ROOT ?>images/login/2.png" alt="Jane Doe" title="Jane Doe" class="img-circle img-responsive"></div>
+                        <h3>Customer Account</h3>
+                        <div class="separator"></div>
+                        <div class="testimonial-body">
+                            <blockquote>
+                                <h4>I want to find a Job( Education, Property ).</h4>
+                            </blockquote>
+                            <a href="<?php echo site_url('auth/register/seller');?>" class="btn btn-default"> Sign Up </a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-12 col-sm-6 col-xs-12" style="color: gray; margin-top: 50px;">
+                    Already have account&nbsp;&nbsp;<a href="<?php echo site_url("auth") ?>"><span style="font-size: large; color:white;">Sign in</span></a>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</section>
+<!--
+                <form action="<?php /*echo site_url("auth/signup"); */ ?>" id="signupform" method="post">
                     <div class="login">
                         <div class="login_title">
-                            <img src="<?php echo ASSETS_ROOT; ?>images/logo.png" alt="logo" class="img-responsive center-block">
+                            <img src="<?php /*echo ASSETS_ROOT; */ ?>images/logo.png" alt="logo" class="img-responsive center-block">
                         </div>
                         <div class="login_fields">
                             <div class="login_fields_user">
@@ -49,22 +107,24 @@
                                 </div>
                                 <input placeholder="Confirm Password" name="confirmpassword" type="password">
                             </div>
-                            <input type="hidden" name="user_type" value="<?php echo $type; ?>">
-
-                            <div class="login_fields_submit" style="text-align: center">
-                                <input value="Register" class="btn btn-default load-more-btn" id="signup_btn" type="button" >
+                            <div class="login_fields_password">
+                                <div class="icon">
+                                    <i class="icon-briefcase"></i>
+                                </div>
+                                <select name="user_type">
+                                    <option value="customer">Customer</option>
+                                    <option value="seller">Seller</option>
+                                </select>
                             </div>
-                            <div class="login_fields_submit " style="text-align: right; color: gray;">
-                                Already have account&nbsp;&nbsp;<a href="<?php echo site_url("auth") ?>"><span style="font-size: large; color:white;">Sign in</span></a>
+                            <div class="login_fields_submit">
+                                <input value="Register" class="btn btn-default" id="signup_btn" type="button">
+                                <div class="forgot">
+                                    Already have account <a href="<?php /*echo site_url("auth") */ ?>">Sign in</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</section>
-
+                </form>-->
 
 <script>
     $(document).ready(function () {

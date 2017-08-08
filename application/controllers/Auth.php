@@ -10,10 +10,14 @@ class Auth extends Front_Controller {
     }
 
     public function index() {
-        $this->load->view('auth/login');
+        $this->front_showpage('auth/login');
     }
-    public function register() {
-        $this->load->view('auth/signup');
+    public function checktype() {
+        $this->front_showpage('auth/checkType');
+    }
+    public function register($type) {
+        $data['type']=$type;
+        $this->front_showpage('auth/signup',$data);
     }
 
     public function login() {

@@ -138,7 +138,7 @@
                                 <li><a href="<?php echo site_url('customer/property/featured_posts'); ?>">Featured Properties </a></li>
                             </ul>
                         </li>
-                        <li class="no-bg"><a href="<?php echo site_url('home/search_job'); ?>" class="p-job"><i class="fa fa-search"></i> Search Job</a></li>
+                        <li class="no-bg"><a href="<?php echo site_url('home/search_job'); ?>" class="p-job"><i class="fa fa-search"></i> Search Post</a></li>
                         <li class="profile-pic">
                             <a href="javascript:void(0)">
                                 <img src="<?php echo ASSETS_ROOT; ?>profile image/client/logo_image/<?php echo $this->login_user_id ?>.jpg" width="36"
@@ -148,6 +148,7 @@
                             <ul class="drop-down-multilevel left-side">
                                 <li><a href="<?php echo site_url('customer/customerDashboard') ?>"><i class="fa fa-user"></i> Dashboard</a></li>
                                 <li><a href="<?php echo site_url('customer/customerDashboard/edit_profile'); ?>"><i class="fa fa-gear"></i> Account Setting</a></li>
+                                <li><a href="<?php echo site_url('customer/customerDashboard/resume'); ?>"><i class="fa fa-edit"></i> My Resume</a></li>
                                 <li><a href="<?php echo site_url("auth/signout"); ?>"><i class="fa fa-power-off"></i> Logout</a></li>
                             </ul>
                         </li>
@@ -159,6 +160,3 @@
         </section>
     </nav>
     <div class="clearfix"></div>
-    <script>
-
-    </script>
