@@ -72,13 +72,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $active_group = 'default';
 $query_builder = TRUE;
-
+/*
+ *
+ * user- luckydnp_jobs
+password-jobs@2017$
+db-luckydnp_jobs
+please update
+ *
+ *
+ * */
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => '',
 	'database' => 'job',
+	/*'username' => 'luckydnp_jobs',
+	'password' => 'jobs@2017$',
+	'database' => 'luckydnp_jobs',*/
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

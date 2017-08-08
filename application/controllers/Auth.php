@@ -4,54 +4,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 require_once APPPATH . "core/Front_Controller.php";
 
 class Auth extends Front_Controller {
-
     public function __construct() {
         parent::__construct();
+        $this->load->model('UserModel');
     }
 
     public function index() {
-        $this->front_showpage('auth/login');
+        $this->load->view('auth/login');
     }
     public function register() {
-        $this->front_showpage('auth/signup');
+        $this->load->view('auth/signup');
     }
 
     public function login() {
-        $email = $this->input->post("email");
-        $password = md5($this->input->post("password"));
-        $this->db->select("*");
-        $this->db->where('email_address', $email);
-        $this->db->where('password', $password);
-        $this->db->from('users_job_client');
-        $query = $this->db->get();
-        $users = $query->result();
-
-        if (count($users) > 0) {
-            $login_user_id = $users[0]->id;
-            $this->session->set_userdata('login_user_id', $login_user_id);
-            $this->session->set_userdata('login_user_name', $users[0]->fullname);
-            $this->session->set_userdata('login_user_email', $users[0]->email_address);
-            $this->session->set_userdata('login_user_type', $users[0]->usertype);
-            $result['status'] = "ok";
-            $data = array(
-                'logined_date' => date('Y-m-d H:i:s')
+        $result= $this->UserModel->loginCheck($_POST["email"],md5($_POST["password"]));
+        if ($result) {
+            $newdata = array(
+                'login_user_id'  => $result->id,
+                'login_user_name'     => $result->fullname,
+                'login_user_email'     => $result->email_address,
+                'login_user_type'     => $result->usertype,
+                'login_user_job_permit'     => $result->job_permit,
+                'login_user_education_permit'     => $result->education_permit,
+                'login_user_property_permit'     => $result->property_permit,
+                'login_user_customer_permit'     => $result->customer_permit,
+                'login_user_fullname'     => $result->fullname
             );
-            $this->db->where('id', $login_user_id);
-            $this->db->update('users', $data);
+            $this->session->set_userdata($newdata);
+            $result1['status'] = "ok";
         } else {
-            $result['status'] = "fail";
+            $result1['status'] = "fail";
         }
-        die(json_encode($result));
+        die(json_encode($result1));
     }
 
-    public function logincheck() {
-        $email = $this->input->post("email");
-        $this->db->select("*");
-        $this->db->where('email_address', $email);
-        $this->db->from('users_job_client');
-        $query = $this->db->get();
-        $users = $query->result();
-        if (count($users) > 0) {
+    public function checkEmail() {
+        if ($this->UserModel->checkEmail($_POST["email"])) {
             $result['status'] = "duplicate";
         } else {
             $result['status'] = "new";
@@ -60,17 +48,27 @@ class Auth extends Front_Controller {
     }
 
     public function signup() {
-        $email = $this->input->post("email");
-        $fullname = $this->input->post("fullname");
-        $password = $this->input->post("password");
-
         $input_user_data = array(
-            'fullname' => $fullname,
-            'email_address' => $email,
-            'password' => md5($password)
+            'fullname' => $_POST["fullname"],
+            'email_address' => $_POST["email"],
+            'password' => md5($_POST["password"]),
+            'usertype' => $_POST["user_type"]
         );
-        $result = $this->db->insert('users_job_client', $input_user_data);
-        if ($result) {
+        $inserted_id=$this->UserModel->signUp($input_user_data);
+        if ($inserted_id) {
+            $newdata = array(
+                'login_user_id'  => $inserted_id,
+                'login_user_name'     => $_POST["fullname"],
+                'login_user_email'     => $_POST["email"],
+                'login_user_fullname'     => '',
+                'login_user_type'     => $_POST["user_type"],
+                'login_user_job_permit'     => 'Non Approved',
+                'login_user_education_permit'     => 'Non Approved',
+                'login_user_property_permit'     => 'Non Approved',
+                'login_user_customer_permit'     => 'Non Approved',
+                'login_user_fullname'     => ''
+            );
+            $this->session->set_userdata($newdata);
             redirect("home");
         }
     }
@@ -79,7 +77,12 @@ class Auth extends Front_Controller {
         $this->session->unset_userdata('login_user_id');
         $this->session->unset_userdata('login_user_name');
         $this->session->unset_userdata('login_user_email');
-        $this->session->unset_userdata('company_id');
+        $this->session->unset_userdata('login_user_type');
+        $this->session->unset_userdata('login_user_job_permit');
+        $this->session->unset_userdata('login_user_education_permit');
+        $this->session->unset_userdata('login_user_property_permit');
+        $this->session->unset_userdata('login_user_customer_permit');
+        $this->session->unset_userdata('login_user_fullname');
         redirect("home");
     }
 

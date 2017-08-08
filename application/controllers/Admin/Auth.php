@@ -2,7 +2,8 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Auth extends CI_Controller {
+require_once APPPATH . "core/Admin_Controller.php";
+class Auth extends Admin_Controller {
 
     public function __construct() {
         parent::__construct();
@@ -28,9 +29,9 @@ class Auth extends CI_Controller {
 
         if (count($users) > 0) {
             $login_user_id = $users[0]->id;
-            $this->session->set_userdata('login_admin_id', $login_user_id);
-            $this->session->set_userdata('login_user_name', $users[0]->fullname);
-            $this->session->set_userdata('login_user_email', $users[0]->email_address);
+            $this->session->set_userdata('admin_user_id', $login_user_id);
+            $this->session->set_userdata('admin_user_name', $users[0]->fullname);
+            $this->session->set_userdata('admin_user_email', $users[0]->email_address);
             $result['status'] = "ok";
             $data = array(
                 'logined_date' => date('Y-m-d H:i:s')
@@ -43,7 +44,7 @@ class Auth extends CI_Controller {
         die(json_encode($result));
     }
 
-    public function logincheck() {
+    public function checkEmail() {
         $email = $this->input->post("email");
         $this->db->select("*");
         $this->db->where('email_address', $email);
@@ -75,10 +76,9 @@ class Auth extends CI_Controller {
     }
 
     public function signout() {
-        $this->session->unset_userdata('login_admin_id');
-        $this->session->unset_userdata('login_user_name');
-        $this->session->unset_userdata('login_user_email');
-        $this->session->unset_userdata('company_id');
+        $this->session->unset_userdata('admin_user_id');
+        $this->session->unset_userdata('admin_user_name');
+        $this->session->unset_userdata('admin_user_email');
         redirect("admin/auth");
     }
 

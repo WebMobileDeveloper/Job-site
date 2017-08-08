@@ -72,7 +72,7 @@
                     var email = $("input[name=email]").val();
 
                     $.post(
-                            '<?php echo site_url('admin/auth/logincheck') ?>', {email: email},
+                            '<?php echo site_url('admin/auth/checkEmail') ?>', {email: email},
                             function (result) {
                                 if (result.status == "duplicate") {
                                     alert("Duplicated User!");
