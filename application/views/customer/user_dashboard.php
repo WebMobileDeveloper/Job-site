@@ -81,8 +81,8 @@
                                 <li <?php echo ($selected_menu == 'Edit Profile') ? "class='active'" : ""; ?>>
                                     <a href="<?php echo site_url('customer/customerDashboard/edit_profile'); ?>"> <i class="fa fa-edit"></i> Edit Profile</a>
                                 </li>
-                                <li <?php echo ($selected_menu == 'My Resumes') ? "class='active'" : ""; ?>>
-                                    <a href="<?php echo site_url('customer/customerDashboard/applied_posts'); ?>"> <i class="fa  fa-list-ul"></i> My Resumes</a>
+                                <li <?php echo ($selected_menu == 'Resume') ? "class='active'" : ""; ?>>
+                                    <a href="<?php echo site_url('customer/customerDashboard/resume/'.$this->login_user_id); ?>"> <i class="fa  fa-list-ul"></i> My Resumes</a>
                                 </li>
                                 <!--
                                 <li <?php /*echo ($selected_menu == 'featured_posts') ? "class='active'" : ""; */?>>

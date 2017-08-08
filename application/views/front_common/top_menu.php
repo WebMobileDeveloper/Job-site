@@ -148,7 +148,7 @@
                             <ul class="drop-down-multilevel left-side">
                                 <li><a href="<?php echo site_url('customer/customerDashboard') ?>"><i class="fa fa-user"></i> Dashboard</a></li>
                                 <li><a href="<?php echo site_url('customer/customerDashboard/edit_profile'); ?>"><i class="fa fa-gear"></i> Account Setting</a></li>
-                                <li><a href="<?php echo site_url('customer/customerDashboard/resume'); ?>"><i class="fa fa-edit"></i> My Resume</a></li>
+                                <li><a href="<?php echo site_url('customer/customerDashboard/resume/'.$this->login_user_id); ?>"><i class="fa fa-edit"></i> My Resume</a></li>
                                 <li><a href="<?php echo site_url("auth/signout"); ?>"><i class="fa fa-power-off"></i> Logout</a></li>
                             </ul>
                         </li>

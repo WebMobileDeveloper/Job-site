@@ -316,6 +316,22 @@
             }
 
         });
+
+        $("#resume-form").submit(function (e) {
+            var ext = getFileExtension2($("#modalfile1").val());
+            if (ext == 'pdf' || ext == 'doc' || ext == 'docx') {
+                if (confirm("Are you sure upload this resume?")) {
+                    $("#modalExt1").val(ext)
+                    return true;
+                } else {
+                    e.preventDefault();
+                }
+            } else {
+                alert("You must upload word or pdf file!\n\n Select again please.");
+                e.preventDefault();
+            }
+
+        });
     });
     function getFileExtension2(filename) {
         return filename.split('.').pop();

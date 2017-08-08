@@ -30,12 +30,42 @@ class CustomerDashboard extends Front_Controller
         $this->front_showpage('customer/user_dashboard', $this->data);
     }
 
-    public function resume()
+    public function resume($customer_id)
     {
-        $this->data['selected_menu'] = 'My Resumes';
+        $this->data['selected_menu'] = 'Resume';
         $this->data['title'] = 'My Resumes';
+        $this->load->model('ResumeModel');
+        $this->data['allResume']= $this->ResumeModel->getCustomerResumes($customer_id);
+
         $this->front_showpage('customer/user_dashboard', $this->data);
     }
+
+
+    public function save_resume()
+    {
+        $this->load->model('ResumeModel');
+        $resume_id=$this->ResumeModel->saveResume($_POST['user_id'],$_POST['title'],$_POST['modalExt1']);
+
+        $target_dir = APPPATH . "../assets/front/user_resume/";
+        $target_file = $target_dir . $resume_id . "." . $_POST['modalExt1'];
+        if ($_FILES['resume1']["tmp_name"] != '') {
+            move_uploaded_file($_FILES['resume1']["tmp_name"], $target_file);
+        }
+        header("Location: " . site_url('customer/customerDashboard/resume/'.$_POST['user_id'])); //Redirect browser
+        exit();
+    }
+    public function delete_resume($user_id,$id,$file_name)
+    {
+        $this->load->model('ResumeModel');
+        $this->ResumeModel->deleteResume($id);
+
+        $target_dir = APPPATH . "../assets/front/user_resume/";
+        $target_file = $target_dir .  $file_name;
+        unlink($target_file);
+        header("Location: " . site_url('customer/customerDashboard/resume/'.$user_id)); //Redirect browser
+        exit();
+    }
+
 
     public function save_image($type, $id)
     {
