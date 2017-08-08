@@ -1,7 +1,7 @@
 <script>
     $(function () {
         $(".decline-user").click(function (e) {
-            if(!confirm('Are you sure decline this customer?')){
+            if(!confirm('Are you sure delete this resume?')){
                 e.preventDefault();
             }
         });
@@ -32,7 +32,8 @@
                         <td>
                             <h5><?php echo $resume->firstName; ?> <?php echo $resume->lastName; ?></h5></td>
                         <td><a class="btn btn-primary" href="<?php echo ASSETS_ROOT; ?>resume/<?php echo $resume->resume;?>"> Download </a></td>
-                        <td><a class="btn btn-danger decline-user" href="<?php echo site_url('job/dashboard/decline/'.$resume->applied_id.'/'.$resume->applied_post_id); ?>"> Decline </a></td>
+                        <td><a class="btn btn-danger decline-user" href="<?php echo site_url('job/dashboard/deleteResume/'.$resume->applied_id.'/'.$resume->resume); ?>">
+                                Delete </a></td>
                     </tr>
                 <?php } ?>
                 </tbody>

@@ -1,3 +1,9 @@
+<style>
+    .dashboard-body .profile-nav ul > li > a {
+        border-left: 5px solid #bfbdbd;
+        background-color: #f7f8f9;
+    }
+</style>
 <section class="job-breadcrumb">
     <div class="container">
         <div class="row">
@@ -21,8 +27,8 @@
     </div>
 </section>
 
-<section class="dashboard-body" style="padding-top:130px;">
-    <div class="container">
+<section class="dashboard-body" style="padding-top:130px; ">
+    <div class="container" style="min-height: 500px;">
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="col-md-2 col-sm-2 col-xs-12">
@@ -32,8 +38,11 @@
                                 <li <?php echo ($menu == 'dashboard') ? "class='active'" : ""; ?>>
                                     <a href="<?php echo site_url('admin'); ?>"> <i class="fa fa-user"></i> Dashboard</a>
                                 </li>
+                                <li <?php echo ($menu == 'edit') ? "class='active'" : ""; ?>>
+                                    <a href="<?php echo site_url('admin/home/edit'); ?>"> <i class="fa fa-edit"></i> Account Setting</a>
+                                </li>
                                 <li <?php echo ($menu == 'sellers') ? "class='active'" : ""; ?>>
-                                    <a href="<?php echo site_url('admin/home/sellers'); ?>"> <i class="fa fa-edit"></i> Sellers</a>
+                                    <a href="<?php echo site_url('admin/home/sellers'); ?>"> <i class="fa fa-file-o"></i> Sellers</a>
                                 </li>
                                 <li <?php echo ($menu == 'customers') ? "class='active'" : ""; ?>>
                                     <a href="<?php echo site_url('admin/home/customers'); ?>"> <i class="fa fa-file-o"></i> Customers </a>

@@ -16,6 +16,20 @@ class Auth extends Admin_Controller {
         }
         $this->load->view('admin/auth/login');
     }
+    public function change_email(){
+        $this->db->where('id', $this->admin_user_id);
+        $this->db->set('email_address', $_POST['email']);
+        $this->db->update('users');
+        $this->session->set_userdata('admin_user_email', $_POST['email']);
+        redirect('admin/home/edit');
+    }
+
+    public function change_pass(){
+        $this->db->where('id', $this->admin_user_id);
+        $this->db->set('password', md5($_POST['password']));
+        $this->db->update('users');
+        redirect('admin/home/edit');
+    }
 
     public function login() {
         $email = $this->input->post("email");
@@ -79,7 +93,7 @@ class Auth extends Admin_Controller {
         $this->session->unset_userdata('admin_user_id');
         $this->session->unset_userdata('admin_user_name');
         $this->session->unset_userdata('admin_user_email');
-        redirect("admin/auth");
+        redirect("admin");
     }
 
 }

@@ -41,6 +41,15 @@ class Dashboard extends Front_Controller
         $this->data['allResume']=$this->PostModel->getAllResume($this->login_user_id);
         $this->front_showpage('property/dashboard', $this->data);
     }
+    public function deleteResume($id,$file_name)
+    {
+        $this->load->model('property/PostModel');
+        $this->PostModel->deleteResume($id);
+
+        $target_file = APPPATH . "../assets/front/resume/" . $file_name;
+        unlink($target_file);
+        redirect(site_url('property/dashboard/resume'));
+    }
 
     public function active_posts()
     {

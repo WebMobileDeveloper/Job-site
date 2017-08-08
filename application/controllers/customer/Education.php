@@ -55,12 +55,20 @@ class Education extends Front_Controller
     }
     public function user_post_detail($post_id, $client_id, $customer_id = -1)
     {
+
         $data['post_id'] = $post_id;
         $data['post_detail'] = $this->PostModel->getPostDetailById($post_id, $customer_id);
         $data["featured_posts"] = $this->PostModel->getFeaturedPostsById($client_id, 5, 1);
 
         $this->load->model("UserModel");
         $data['client_info'] = $this->UserModel->getClientDetail($client_id,'education');
+
+        $data['allResume']=array();
+        if($customer_id!=-1) {
+            $this->load->model('ResumeModel');
+            $data['allResume'] = $this->ResumeModel->getCustomerResumes($customer_id);
+        }
+
         $this->front_showpage('customer/userPostDetail', $data);
     }
     /*public function save()

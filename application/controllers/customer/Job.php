@@ -61,6 +61,13 @@ class Job extends Front_Controller
 
         $this->load->model("UserModel");
         $data['client_info'] = $this->UserModel->getClientDetail($client_id,'job');
+
+        $data['allResume']=array();
+        if($customer_id!=-1) {
+            $this->load->model('ResumeModel');
+            $data['allResume'] = $this->ResumeModel->getCustomerResumes($customer_id);
+        }
+
         $this->front_showpage('customer/userPostDetail', $data);
     }
     /*public function save()

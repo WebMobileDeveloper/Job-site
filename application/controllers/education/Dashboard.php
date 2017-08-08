@@ -43,6 +43,15 @@ class Dashboard extends Front_Controller
 
     }
 
+    public function deleteResume($id,$file_name)
+    {
+        $this->load->model('property/PostModel');
+        $this->PostModel->deleteResume($id);
+
+        $target_file = APPPATH . "../assets/front/resume/" . $file_name;
+        unlink($target_file);
+        redirect(site_url('education/dashboard/resume'));
+    }
     public function active_posts()
     {
         $per_page = 5;

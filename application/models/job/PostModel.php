@@ -132,12 +132,17 @@ class PostModel extends CI_Model
     function getAllResume($user_id)
     {
         $this->db->where('post_user_id',$user_id);
-        $this->db->where('hired',0);
+        $this->db->where('resume!=','');
         $this->db->where('tbl_post.post_type','job');
         $this->db->from('tbl_applied');
         $this->db->join('tbl_post','tbl_applied.applied_post_id=tbl_post.post_id');
         $this->db->join('tbl_users_data','tbl_applied.applied_user_id=tbl_users_data.user_id');
         return $this->db->get()->result();
+    }
+    function deleteResume($id){
+        $this->db->where('applied_id',$id);
+        $this->db->set('resume','');
+        $this->db->update('tbl_applied');
     }
 
     function apply($post_id,$client_id,$user_id,$name,$email,$coverletter,$ext){

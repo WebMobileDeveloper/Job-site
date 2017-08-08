@@ -67,11 +67,17 @@ class Post extends Front_Controller
     {
         $target_dir = APPPATH . "../assets/front/resume/";
         $target_file = $target_dir . $_POST['modalpost_id'] . "_" . $_POST['modaluser_id'] . "." . $_POST['modalExt'];
+
         $this->load->model('job/PostModel');
         $this->PostModel->apply($_POST['modalpost_id'], $_POST['modalclient_id'], $_POST['modaluser_id'],
             $_POST['modalName'], $_POST['modalEmail'], $_POST['message'], $_POST['modalExt']);
+
+
         if ($_FILES['resume']["tmp_name"] != '') {
             move_uploaded_file($_FILES['resume']["tmp_name"], $target_file);
+        }
+        if($_POST['copy_resume']!=''){
+            copy(APPPATH."../assets/front/user_resume/".$_POST['copy_resume'],$target_file);
         }
         header("Location: " . $_POST['modalorigin_url']); //Redirect browser
         exit();

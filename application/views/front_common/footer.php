@@ -159,7 +159,18 @@
                                 </span>
                             </div>
                         </div>
+                        <div class="column col-md-12 col-sm-12 col-xs-12">Select Resume
+                            <div class="form-group">
+                                <select name="copy_resume" id="copy_resume" class="form-control" placeholder="Select Resume">
+                                    <option></option>
+                                    <?php foreach ($allResume as $resume) { ?>
+                                        <option value="<?php echo $resume->resume_file; ?>"><?php echo $resume->resume_title; ?></option>
+                                    <?php } ?>
+                                </select>
 
+                            </div>
+
+                        </div>
                         <div class="column col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <textarea name="message" rows="6" class="form-control" placeholder="Cover Letter" required></textarea>
@@ -258,8 +269,8 @@
     var login_user_type = "<?php echo $this->login_user_type; ?>";
     var login_user_fullname = "<?php echo $this->login_user_fullname; ?>";
     var login_user_email = "<?php echo $this->login_user_email; ?>";
-    var action=" <?php echo (isset($post_detail))?site_url($post_detail->post_type.'/post/apply_post'):''; ?>";
-    console.log('action=',action);
+    var action = " <?php echo (isset($post_detail)) ? site_url($post_detail->post_type . '/post/apply_post') : ''; ?>";
+    console.log('action=', action);
     $(function () {
 
         $("a.post").click(function (e) {
@@ -274,7 +285,7 @@
         });
         $("#alertModal").on("hidden.bs.modal", function () {
             if (afterHiddenModal != '') {
-                location.href=afterHiddenModal;
+                location.href = afterHiddenModal;
             }
         });
 
@@ -302,26 +313,48 @@
         });
 
         $("#job-form").submit(function (e) {
-            var ext = getFileExtension2($("#modalfile").val());
-            if (ext == 'pdf' || ext == 'doc' || ext == 'docx') {
-                if (confirm("Are you sure apply to this job?")) {
-                    $("#modalExt").val(ext)
-                    return true;
-                } else {
-                    e.preventDefault();
-                }
-            } else {
-                alert("You must upload word or pdf file!\n\n Select again please.");
-                e.preventDefault();
-            }
+                var ext = getFileExtension2($("#modalfile").val());
 
-        });
+                if ($("#modalfile").val() != '') {
+                    if ($("#copy_resume").val() != '') {
+                        alert("You can upload only one resume!");
+                        e.preventDefault();
+                        return false;
+                    }
+                    if (ext == 'pdf' || ext == 'doc' || ext == 'docx') {
+                        if (confirm("Are you sure apply to this job?")) {
+                            $("#modalExt").val(ext);
+                            return true;
+                        } else {
+                            e.preventDefault();
+                            return false;
+                        }
+                    } else {
+                        alert("You must upload word or pdf file!\n\n Select again please.");
+                        e.preventDefault();
+                        return false;
+                    }
+                } else {
+                    if ($("#copy_resume").val() == '') {
+                        alert("You must upload one resume!");
+                        e.preventDefault();
+                        return false;
+                    }
+                    ext = getFileExtension2($("#copy_resume").val());
+                    $("#modalExt").val(ext);
+                    return true;
+                }
+
+            }
+        );
 
         $("#resume-form").submit(function (e) {
             var ext = getFileExtension2($("#modalfile1").val());
+
+
             if (ext == 'pdf' || ext == 'doc' || ext == 'docx') {
                 if (confirm("Are you sure upload this resume?")) {
-                    $("#modalExt1").val(ext)
+                    $("#modalExt1").val(ext);
                     return true;
                 } else {
                     e.preventDefault();
@@ -330,7 +363,6 @@
                 alert("You must upload word or pdf file!\n\n Select again please.");
                 e.preventDefault();
             }
-
         });
     });
     function getFileExtension2(filename) {

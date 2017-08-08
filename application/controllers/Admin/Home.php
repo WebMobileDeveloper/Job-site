@@ -24,6 +24,11 @@ class Home extends Admin_Controller
             $this->admin_showpage('admin/home', $data);
         }
     }
+    public function edit(){
+        $data['menu'] = 'edit';
+        $this->admin_showpage('admin/home', $data);
+    }
+
     public function sellers(){
         $data['menu'] = 'sellers';
         $data['sellers']=$this->AdminModel->getSellers();

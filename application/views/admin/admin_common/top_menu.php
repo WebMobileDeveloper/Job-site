@@ -80,6 +80,9 @@
             <ul class="menu-logo">
                 <li><a href="<?php echo site_url("admin"); ?>"> <img src="<?php echo ASSETS_ROOT; ?>images/logo.png" alt="logo" class="img-responsive"> </a></li>
             </ul>
+            <ul class="menu-links pull-right">
+                <li class="no-bg login-btn-no-bg"><a href="<?php echo site_url('admin/auth/signout'); ?>" class="login-header-btn"><i class="fa fa-power-off"></i> Log Out</a></li>
+            </ul>
         </section>
     </nav>
     <div class="clearfix"></div>
