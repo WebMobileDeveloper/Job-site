@@ -51,7 +51,7 @@ $typeColor = array("jt-full-time-color", "jt-part-time-color", "jt-remote-color"
                                     <dd> <?php echo $post_detail->vacancies; ?></dd><div class="clearfix"></div>
 
                                     <dt>Location(s):</dt>
-                                    <dd> <?php echo $client_info->city; ?>, <?php echo $this->countries[$client_info->country]; ?></dd><div class="clearfix"></div>
+                                    <dd> <?php echo $client_info->city; ?>, Malaysia</dd><div class="clearfix"></div>
 
                                     <dt>Expected Salary:</dt>
                                     <dd>$<?php echo $post_detail->price; ?> / Month</dd><div class="clearfix"></div>
@@ -96,7 +96,7 @@ $typeColor = array("jt-full-time-color", "jt-part-time-color", "jt-remote-color"
                                 <table>
                                     <tr>
                                         <th>Company Name:</th>
-                                        <td> <?php echo $client_info->company_name; ?>, <?php echo $this->countries[$client_info->country]; ?></td>
+                                        <td> <?php echo $client_info->company_name; ?>, Malaysia</td>
                                     </tr>
                                     <tr>
                                         <th>Phone:</th>
@@ -104,7 +104,7 @@ $typeColor = array("jt-full-time-color", "jt-part-time-color", "jt-remote-color"
                                     </tr>
                                     <tr>
                                         <th>Address:</th>
-                                        <td> <?php echo $client_info->address; ?>, <?php echo $client_info->city; ?>, <?php echo $this->countries[$client_info->country]; ?></td>
+                                        <td> <?php echo $client_info->address; ?>, <?php echo $client_info->city; ?>, Malaysia</td>
                                     </tr>
                                 </table>
                             </div>

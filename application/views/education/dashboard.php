@@ -13,7 +13,7 @@
                                          onerror="this.src = '<?php echo ASSETS_ROOT; ?>images/company/default_profile.png'" class="img-responsive center-block">
                                 </div>
                                 <h3><?php echo $client_info->company_name; ?></h3>
-                                <p><?php echo $client_info->address; ?>  <?php echo $client_info->city; ?>   <?php echo $this->countries[$client_info->country]; ?></p>
+                                <p><?php echo $client_info->address; ?>  <?php echo $client_info->city; ?>   Malaysia</p>
                                 <ul class="social-links list-inline">
                                     <li><a href="#"><i class="icon-facebook"></i></a></li>
                                     <li><a href="#"><i class="icon-twitter"></i></a></li>

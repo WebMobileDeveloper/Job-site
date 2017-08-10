@@ -32,7 +32,25 @@ class Front_Controller extends CI_Controller
         define('WEB_ROOT', base_url());
         define('ASSETS_ROOT', WEB_ROOT . 'assets/front/');
         $this->Front = &get_instance();
+        $this->load->model('UserModel');
 
+        if($this->session->userdata('login_user_id')) {
+            $result = $this->UserModel->updateUserData($this->session->userdata('login_user_email'));
+            if ($result) {
+                $newdata = array(
+                    'login_user_id' => $result->id,
+                    'login_user_name' => $result->fullname,
+                    'login_user_email' => $result->email_address,
+                    'login_user_type' => $result->usertype,
+                    'login_user_job_permit' => $result->job_permit,
+                    'login_user_education_permit' => $result->education_permit,
+                    'login_user_property_permit' => $result->property_permit,
+                    'login_user_customer_permit' => $result->customer_permit,
+                    'login_user_fullname' => $result->fullname
+                );
+                $this->session->set_userdata($newdata);
+            }
+        }
 
         $this->login_user_id = $this->session->userdata('login_user_id');
         $this->login_user_name = $this->session->userdata('login_user_name');

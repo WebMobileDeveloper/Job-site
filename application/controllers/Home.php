@@ -32,10 +32,9 @@ class Home extends Front_Controller {
         $data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 1;
         $data['tags'] = (isset($_POST['keyword'])) ? $_POST['keyword'] : '';
         $data['category'] = (isset($_POST['category'])) ? $_POST['category'] : '';
-        $data['country'] = (isset($_POST['country'])) ? $_POST['country'] : '';
 
-        $data['result'] = $this->PostModel->SearchJobsById($user_id, $data['per_page'], $data['page'], $data['tags'], $data['category'], $data['country']);
-        $data['total_count'] = $this->PostModel->SearchRecordCountById($user_id, $data['tags'], $data['category'], $data['country']);
+        $data['result'] = $this->PostModel->SearchJobsById($user_id, $data['per_page'], $data['page'], $data['tags'], $data['category']);
+        $data['total_count'] = $this->PostModel->SearchRecordCountById($user_id, $data['tags'], $data['category']);
         $this->front_showpage('front_common/jobList', $data);
     }
 
@@ -74,7 +73,7 @@ class Home extends Front_Controller {
 
     public function save_seller_profile()
     {
-        $this->UserModel->setClientData($_POST['user_id'], $_POST['fullname'], $_POST['phone'],$_POST['country'], $_POST['city'], $_POST['address']);
+        $this->UserModel->setClientData($_POST['user_id'], $_POST['fullname'], $_POST['phone'], $_POST['city'], $_POST['address']);
         $this->save_image("logo_image", $this->login_user_id);
         redirect('home/sellerDashboard/edit');
     }

@@ -4,13 +4,13 @@
             <p class="title">Customers</p>
         </div>
 
-        <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <table id="example" class="table table-striped table-bordered display" cellspacing="0" width="100%"  >
             <thead>
-            <tr>
+            <tr >
                 <th>Name</th>
                 <th>Email</th>
-                <th>Phone</th>
-                <th>Country</th>
+                <th>Mobile(Phone)</th>
+                <th>States</th>
                 <th>City</th>
                 <th>Address</th>
                 <th>Register Date</th>
@@ -22,11 +22,11 @@
                 $acc=$customer['account'];
                 $cus=$customer['customer'];
                 ?>
-                <tr>
+                <tr >
                     <td><?php echo $acc->fullname ?></td>
                     <td><?php echo $acc->email_address ;?></td>
                     <td><?php echo $acc->accountPhone ;?></td>
-                    <td><?php echo $this->countries[$acc->accountCountry]; ?></td>
+                    <td>Malaysia</td>
                     <td><?php echo $acc->accountCity ;?></td>
                     <td><?php echo $acc->accountAddress ?></td>
                     <td><?php echo substr($acc->registered_date,0,10); ?></td>
@@ -53,7 +53,18 @@
                 }
             });
         });
-        $('#example').DataTable();
+        var table=$('#example').DataTable();
 
+        table.on( 'draw', function () {
+            var body = $( table.table().body() );
+
+            body.unhighlight();
+            body.highlight( table.search() );
+        } );
     });
+
+
+
+
+
 </script>

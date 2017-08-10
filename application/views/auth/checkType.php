@@ -46,7 +46,7 @@
                             <blockquote>
                                 <h4>I want to find a Customer.</h4>
                             </blockquote>
-                            <a href="<?php echo site_url('auth/register/customer');?>" class="btn btn-default"> Sign Up</i> </a>
+                            <a href="<?php echo site_url('auth/register/seller');?>" class="btn btn-default login-header-btn"><i class="fa fa-sign-in"></i>Sign Up </a>
                         </div>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
                             <blockquote>
                                 <h4>I want to find a Job( Education, Property ).</h4>
                             </blockquote>
-                            <a href="<?php echo site_url('auth/register/seller');?>" class="btn btn-default"> Sign Up </a>
+                            <a href="<?php echo site_url('auth/register/customer');?>" class="btn btn-default login-header-btn"><i class="fa fa-user-plus"></i>Sign Up </a>
                         </div>
                     </div>
                 </div>

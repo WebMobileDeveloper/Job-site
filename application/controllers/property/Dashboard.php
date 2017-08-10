@@ -91,7 +91,7 @@ class Dashboard extends Front_Controller
     public function save_profile()
     {
         $this->UserModel->setCompanyData($_POST['user_id'], $_POST['industry'], $_POST['bussiness_type'], $_POST['established_date'], $_POST['employees'], $_POST['phone'],
-            $_POST['country'], $_POST['city'], $_POST['company_name'], $_POST['address'], $_POST['about_company'],$_POST['contact_email']);
+            $_POST['city'], $_POST['company_name'], $_POST['address'], $_POST['about_company'],$_POST['contact_email']);
         $this->save_image("profile_image", $this->login_user_id);
         $this->save_image("logo_image", $this->login_user_id);
         redirect('property/dashboard/edit_profile');

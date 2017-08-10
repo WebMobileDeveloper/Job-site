@@ -27,7 +27,7 @@
             <dd><?php echo $client_info->bussiness_type; ?></dd><div class="clearfix"></div>
 
             <dt>Country:</dt>
-            <dd><?php echo $this->countries[$client_info->country]; ?></dd>
+            <dd>Malaysia</dd>
 
             <dt>City:</dt>
             <dd><?php echo $client_info->city; ?></dd>

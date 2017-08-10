@@ -27,7 +27,7 @@
                     <td><?php echo $post->title; ?></td>
                     <td><?php echo $post->company_type; ?></td>
                     <td><?php echo $post->company_name; ?></td>
-                    <td><?php echo $this->countries[$post->country]; ?></td>
+                    <td>Malaysia</td>
                     <td><?php echo $post->phone; ?></td>
                     <td><?php echo $this->job_types[$post->type]; ?></td>
                     <td><?php echo substr($post->posted_date, 0, 16); ?></td>

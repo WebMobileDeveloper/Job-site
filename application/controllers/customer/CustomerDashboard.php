@@ -79,7 +79,7 @@ class CustomerDashboard extends Front_Controller
     public function save_profile()
     {
         $this->UserModel->setUserData($_POST['user_id'], $_POST['firstName'],$_POST['lastName'], $_POST['company_name'], $_POST['established_date'], $_POST['phone'],
-            $_POST['country'], $_POST['city'], $_POST['address'],$_POST['bussiness_type'], $_POST['about_company'],$_POST['skills']);
+            $_POST['city'], $_POST['address'],$_POST['bussiness_type'], $_POST['about_company'],$_POST['skills']);
         $this->save_image("logo_image", $this->login_user_id);  /* $this->save_image("profile_image", $_POST['user_id']);*/
         redirect('customer/customerDashboard/edit_profile');
     }

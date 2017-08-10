@@ -90,6 +90,8 @@ $db['default'] = array(
 	/*'username' => 'luckydnp_jobs',
 	'password' => 'jobs@2017$',
 	'database' => 'luckydnp_jobs',*/
+
+
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

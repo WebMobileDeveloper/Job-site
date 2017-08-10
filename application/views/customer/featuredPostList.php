@@ -37,7 +37,7 @@ $typeColor = array("jt-full-time-color", "jt-part-time-color", "jt-remote-color"
                                         <a href="<?php echo site_url('customer/'.$type.'/user_post_detail/' . $row->post_id . '/' . $row->user_id . '/' . $this->login_user_id); ?>">
                                             <div class="job-title"> <?php echo $row->title; ?></div>
                                         </a>
-                                        <a href="#"><span class="comp-name"><?php echo $row->company_name; ?><?php echo $row->city; ?><?php echo $this->countries[$row->country]; ?></span></a>
+                                        <a href="#"><span class="comp-name"><?php echo $row->company_name; ?><?php echo $row->city; ?>Malaysia</span></a>
 
                                     </div>
                                 </div>

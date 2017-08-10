@@ -12,7 +12,7 @@ $typeColor = array("jt-full-time-color", "jt-part-time-color", "jt-remote-color"
                     <a href="<?php echo site_url('property/post/post_detail/'.$row->post_id.'/'.$row->user_id); ?>">
                         <div class="job-title"> <?php echo $row->title; ?></div>
                     </a>
-                    <a href="#"><span class="comp-name"><?php echo $row->company_name; ?>&emsp;<?php echo $row->city; ?>&emsp;<?php echo $this->countries[$row->country]; ?> </span></a>
+                    <a href="#"><span class="comp-name"><?php echo $row->company_name; ?>&emsp;<?php echo $row->city; ?>&emsp;Malaysia </span></a>
                     <a href="" class="job-type <?php echo $typeColor[$row->type]; ?>">
                         <i class="fa fa-clock-o"></i> <?php echo $this->job_types[$row->type]; ?>
                     </a>

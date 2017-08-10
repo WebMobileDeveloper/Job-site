@@ -52,7 +52,7 @@
                             <input type="hidden" name="user_type" value="<?php echo $type; ?>">
 
                             <div class="login_fields_submit" style="text-align: center">
-                                <input value="Register" class="btn btn-default load-more-btn" id="signup_btn" type="button" >
+                                <a  id="signup_btn" class="btn btn-default login-header-btn"><i class="fa fa-user-plus"></i>Register </a>
                             </div>
                             <div class="login_fields_submit " style="text-align: right; color: gray;">
                                 Already have account&nbsp;&nbsp;<a href="<?php echo site_url("auth") ?>"><span style="font-size: large; color:white;">Sign in</span></a>

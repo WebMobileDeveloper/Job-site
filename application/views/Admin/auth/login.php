@@ -60,8 +60,8 @@
 
 
 
-    <section class="login-page-2 parallex full-page">
-        <div class="container">
+    <section class="login-page-2 parallex full-page" >
+        <div class="container" style="margin-top: 100px;">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="login">
@@ -82,12 +82,11 @@
                                     </div>
                                     <input name="password" placeholder="Password" type="password">
                                 </div>
-                                <div class="login_fields_submit">
-                                    <input value="Log In" id="signin_btn" class="btn btn-default pull-right col-md-12" type="button">
+                                <div class="login_fields_submit" style="text-align: center;">
+                                    <a id="signin_btn" class="btn btn-default login-header-btn"><i class="fa fa-sign-in"></i> Log in</a>
 
                                     <br><br><br>
-                                    <a href="<?php echo site_url('admin/auth/register') ?>" style="color:white;" class="pull-right">Sign Up With Email</a>
-
+                                    <!--<a href="< ?php /*echo site_url('admin/auth/register') */?>" style="color:white;" class="pull-right">Sign Up With Email</a>-->
 
                                 </div>
 

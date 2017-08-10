@@ -39,14 +39,8 @@
 
             <div class="col-md-6 col-sm-12">
                 <div class="form-group">
-                    <label>Your Country: <span class="required">*</span></label>
-                    <select name="country" class="questions-location form-control">
-                        <?php
-                        $i = 0;
-                        foreach ($this->countries as $country) { ?>
-                            <option <?php echo ($i == $client_info->accountCountry) ? 'selected' : ''; ?> value="<?php echo $i++; ?>"><?php echo $country; ?></option>
-                        <?php } ?>
-                    </select>
+                    <label>Your Country: </label>
+                    <input type="text" class="form-control" value="Malaysia" readonly>
                 </div>
 
             </div>

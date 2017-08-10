@@ -49,13 +49,12 @@ class PostModel extends CI_Model
     }
 
 
-    function SearchJobsById($user_id, $per_page, $page, $tag = '', $category = '', $country = '')
+    function SearchJobsById($user_id, $per_page, $page, $tag = '', $category = '')
     {
         $result = array();
 
         if ($tag != '') $this->db->like('tags', $tag, 'both');
         if ($category != '') $this->db->where('category', $category);
-        if ($country != '') $this->db->where('country', $country);
         $this->db->join('tbl_users_data', 'tbl_users_data.user_id = tbl_post.user_id and tbl_users_data.company_type=tbl_post.post_type');
         $this->db->limit($per_page, ($page - 1) * $per_page);
         $this->db->order_by('posted_date desc');
@@ -83,11 +82,10 @@ class PostModel extends CI_Model
         return $result;
     }
 
-    public function SearchRecordCountById($user_id, $tag = '', $category = '', $country = '')
+    public function SearchRecordCountById($user_id, $tag = '', $category = '')
     {
         if ($tag != '') $this->db->like('tags', "%$tag%");
         if ($category != '') $this->db->where('category', $category);
-        if ($country != '') $this->db->where('country', $country);
         $this->db->from('tbl_post');
         $this->db->join('tbl_users_data', 'tbl_users_data.user_id = tbl_post.user_id and tbl_users_data.company_type=tbl_post.post_type');
         return count($this->db->get()->result());

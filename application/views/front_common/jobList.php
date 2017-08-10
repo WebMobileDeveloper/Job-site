@@ -34,18 +34,7 @@ $typeColor = array("jt-full-time-color", "jt-part-time-color", "jt-remote-color"
                         </div>
                         <div class="col-md-3 col-sm-3 col-xs-12 nopadding">
                             <div class="form-group">
-                                <select class="select-location form-control" name="country">
-                                    <option value="">&nbsp;</option>
-                                    <?php
-                                    $i = 0;
-                                    $selected = (isset($country)) ? $country : -1;
-                                    foreach ($this->countries as $country) { ?>
-                                        <option value="<?php echo $i;
-                                        echo ($i == 3) ? ' selected' : ''; ?>"><?php echo $country; ?></option>
-                                        <?php
-                                        $i++;
-                                    } ?>
-                                </select>
+                                <input type="text" class="form-control" value="Malaysia">
                             </div>
                         </div>
                         <div class="col-md-2 col-sm-2 col-xs-12 nopadding">
@@ -97,7 +86,7 @@ $typeColor = array("jt-full-time-color", "jt-part-time-color", "jt-remote-color"
                                         ">
                                             <div class="job-title"> <?php echo $row->title; ?></div>
                                         </a>
-                                        <a href="#"><span class="comp-name"><?php echo $row->company_name; ?><?php echo $row->city; ?><?php echo $this->countries[$row->country]; ?></span></a>
+                                        <a href="#"><span class="comp-name"><?php echo $row->company_name; ?><?php echo $row->city; ?>Malaysia</span></a>
                                     </div>
                                 </div>
 

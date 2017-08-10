@@ -43,15 +43,43 @@ class UserModel extends CI_Model
                 $result->customer_permit=$row->company_permit;
                 $result->fullname=$row->firstName."  ".$row->lastName;
             }
-
-
-
             return $result;
         }else{
             return false;
         }
     }
-
+    function updateUserData($email){
+        $this->db->select("*");
+        $this->db->where('email_address', $email);
+        $this->db->from('tbl_users');
+        $result= $this->db->get()->row();
+        if($result){
+            $result->job_permit='';
+            $result->education_permit='';
+            $result->property_permit='';
+            $result->customer_permit='';
+            $result->fullname='';
+            if($result->usertype=='seller'){
+                $this->db->where('user_id',$result->id);
+                $this->db->where('company_type','job');
+                $result->job_permit=$this->db->get('tbl_users_data')->row()->company_permit;
+                $this->db->where('user_id',$result->id);
+                $this->db->where('company_type','education');
+                $result->education_permit=$this->db->get('tbl_users_data')->row()->company_permit;
+                $this->db->where('user_id',$result->id);
+                $this->db->where('company_type','property');
+                $result->property_permit=$this->db->get('tbl_users_data')->row()->company_permit;
+            }else{
+                $this->db->where('user_id',$result->id);
+                $row=$this->db->get('tbl_users_data')->row();
+                $result->customer_permit=$row->company_permit;
+                $result->fullname=$row->firstName."  ".$row->lastName;
+            }
+            return $result;
+        }else{
+            return false;
+        }
+    }
     function checkEmail($email){
         $this->db->select("*");
         $this->db->where('email_address', $email);
@@ -110,11 +138,10 @@ class UserModel extends CI_Model
         return $result;
     }
 
-    function setClientData($id,$fullname,$phone,$country,$city,$address){
+    function setClientData($id,$fullname,$phone,$city,$address){
         $this->db->where('id',$id);
         $this->db->set('fullname',$fullname);
         $this->db->set('accountPhone',$phone);
-        $this->db->set('accountCountry',$country);
         $this->db->set('accountCity',$city);
         $this->db->set('accountAddress',$address);
         $result=$this->db->update('tbl_users');
@@ -130,14 +157,13 @@ class UserModel extends CI_Model
         return $result;
     }
 
-    function setCompanyData($id,$industry,$bussiness_type,$established_date,$employees,$phone,$country,$city,$company_name,$address,$about_company,$contact_email){
+    function setCompanyData($id,$industry,$bussiness_type,$established_date,$employees,$phone,$city,$company_name,$address,$about_company,$contact_email){
         $this->db->where('user_data_id',$id);
         $this->db->set('industry',$industry);
         $this->db->set('bussiness_type',$bussiness_type);
         $this->db->set('established_date',$established_date);
         $this->db->set('employees',$employees);
         $this->db->set('phone',$phone);
-        $this->db->set('country',$country);
         $this->db->set('city',$city);
         $this->db->set('company_name',$company_name);
         $this->db->set('address',$address);
@@ -147,14 +173,13 @@ class UserModel extends CI_Model
         return $result;
     }
 
-    function setUserData($id,$firstName,$lastName,$company_name,$established_date,$phone,$country,$city,$address,$bussiness_type,$about_company,$skills){
+    function setUserData($id,$firstName,$lastName,$company_name,$established_date,$phone,$city,$address,$bussiness_type,$about_company,$skills){
         $this->db->where('user_id',$id);
         $this->db->set('firstName',$firstName);
         $this->db->set('lastName',$lastName);
         $this->db->set('company_name',$company_name);
         $this->db->set('established_date',$established_date);
         $this->db->set('phone',$phone);
-        $this->db->set('country',$country);
         $this->db->set('city',$city);
         $this->db->set('address',$address);
         $this->db->set('bussiness_type',$bussiness_type);

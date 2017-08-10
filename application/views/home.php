@@ -34,18 +34,8 @@ $indexArr = array("bycompany", "bycategory", "bycity", "bytype", "byprice");
                         </div>
                         <div class="col-md-3 col-sm-3 col-xs-12 nopadding">
                             <div class="form-group">
-                                <select class="select-location form-control" name="country">
-                                    <option value="">&nbsp;</option>
-                                    <?php
-                                    $i = 0;
-                                    $selected = (isset($country)) ? $country : -1;
-                                    foreach ($this->countries as $country) { ?>
-                                        <option value="<?php echo $i;
-                                        echo ($i == $selected) ? ' selected' : ''; ?>"><?php echo $country; ?></option>
-                                    <?php
-                                        $i++;
-                                    } ?>
-                                </select>
+                                <input type="text" class="form-control" name="keyword" placeholder="Search Keyword"
+                                       value="Malaysia" readonly>
                             </div>
                         </div>
                         <div class="col-md-2 col-sm-2 col-xs-12 nopadding">
@@ -101,7 +91,7 @@ $indexArr = array("bycompany", "bycategory", "bycity", "bytype", "byprice");
                                                         <a href="#">
                                                             <div class="job-title"> <?php echo $post->title; ?></div>
                                                         </a>
-                                                        <a href="#"><span class="comp-name"><?php echo $post->company_name . "   " . $post->country; ?> </span></a>
+                                                        <a href="#"><span class="comp-name"><?php echo $post->company_name . "   Malaysia" ; ?> </span></a>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3 col-sm-3 col-xs-6">

@@ -15,7 +15,7 @@
             <dd><?php echo $client_info->accountPhone; ?></dd>
 
             <dt>Country:</dt>
-            <dd><?php echo $this->countries[$client_info->accountCountry]; ?></dd>
+            <dd>Malaysia</dd>
 
             <dt>City:</dt>
             <dd><?php echo $client_info->accountCity; ?></dd>

@@ -49,7 +49,7 @@ $typeColor = array("jt-full-time-color", "jt-part-time-color", "jt-remote-color"
 
                                     <dt>Location(s):</dt>
 
-                                    <dd> <?php echo $client_info->city; ?>, <?php echo $this->countries[$client_info->country]; ?></dd>
+                                    <dd> <?php echo $client_info->city; ?>, Malaysia</dd>
 
                                     <dt>Expected Salary:</dt>
                                     <dd>$<?php echo $post_detail->price; ?> / Month</dd>
@@ -95,7 +95,7 @@ $typeColor = array("jt-full-time-color", "jt-part-time-color", "jt-remote-color"
                                 <table>
                                     <tr>
                                         <th>Company Name:</th>
-                                        <td> <?php echo $client_info->company_name; ?>, <?php echo $this->countries[$client_info->country]; ?></td>
+                                        <td> <?php echo $client_info->company_name; ?>, Malaysia</td>
                                     </tr>
                                     <tr>
                                         <th>Phone:</th>
@@ -103,7 +103,7 @@ $typeColor = array("jt-full-time-color", "jt-part-time-color", "jt-remote-color"
                                     </tr>
                                     <tr>
                                         <th>Address:</th>
-                                        <td> <?php echo $client_info->address; ?>, <?php echo $client_info->city; ?>, <?php echo $this->countries[$client_info->country]; ?></td>
+                                        <td> <?php echo $client_info->address; ?>, <?php echo $client_info->city; ?>, Malaysia</td>
                                     </tr>
                                 </table>
                             </div>

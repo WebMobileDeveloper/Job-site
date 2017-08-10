@@ -65,6 +65,12 @@
     <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
 
 
+    <script src="//cdn.datatables.net/plug-ins/1.10.15/features/searchHighlight/dataTables.searchHighlight.min.js"></script>
+    <link href="//cdn.datatables.net/plug-ins/1.10.15/features/searchHighlight/dataTables.searchHighlight.css"  rel="stylesheet" type="text/css">
+    <script src="//bartaz.github.io/sandbox.js/jquery.highlight.js"></script>
+
+
+
 
 </head>
 <body>

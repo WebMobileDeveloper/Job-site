@@ -134,6 +134,11 @@ class AdminModel extends CI_Model
     function  approve($user_data_id,$value){
         $this->db->where('user_data_id',$user_data_id);
         $this->db->set('company_permit',$value);
+        if($value=='Approved'){
+            $this->db->set('approve_date',date('Y-m-d'));
+        }else{
+            $this->db->set('approve_date','');
+        }
         $this->db->update('tbl_users_data');
         return "success";
     }

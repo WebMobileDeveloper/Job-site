@@ -25,13 +25,9 @@ class Admin_Controller extends CI_Controller
         define('WEB_ROOT', base_url());
         define('ASSETS_ROOT', WEB_ROOT . 'assets/front/');
         $this->Front = &get_instance();
-
-
         $this->admin_user_id = $this->session->userdata('admin_user_id');
         $this->admin_user_name = $this->session->userdata('admin_user_name');
         $this->admin_user_email = $this->session->userdata('admin_user_email');
-
-
     }
 
 

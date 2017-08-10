@@ -23,7 +23,7 @@ $typeColor = array("jt-full-time-color", "jt-part-time-color", "jt-remote-color"
                         <span class="job-type <?php echo $typeColor[$row->type]; ?>">
                         <i class="fa fa-clock-o"></i> <?php echo $this->job_types[$row->type]; ?>
                     </span>
-                        <span><span class="comp-name"><?php echo $row->company_name; ?>&emsp;<?php echo $row->city; ?>&emsp;<?php echo $this->countries[$row->country]; ?></span></span>
+                        <span><span class="comp-name"><?php echo $row->company_name; ?>&emsp;<?php echo $row->city; ?>&emsp;Malaysia</span></span>
 
                     </div>
                     <div>
