@@ -351,7 +351,6 @@
         $("#resume-form").submit(function (e) {
             var ext = getFileExtension2($("#modalfile1").val());
 
-
             if (ext == 'pdf' || ext == 'doc' || ext == 'docx') {
                 if (confirm("Are you sure upload this resume?")) {
                     $("#modalExt1").val(ext);

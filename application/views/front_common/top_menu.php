@@ -157,6 +157,8 @@
                     <li class="no-bg login-btn-no-bg"><a href="<?php echo site_url('auth'); ?>" class="login-header-btn"><i class="fa fa-sign-in"></i> Log in</a></li>
                     <li class="no-bg login-btn-no-bg"><a href="<?php echo site_url('auth/checktype'); ?>" class="login-header-btn"><i class="fa fa-user-plus"></i> Sign Up</a></li>
                 <?php } ?>
+
+                
             </ul>
         </section>
     </nav>

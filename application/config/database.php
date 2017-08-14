@@ -87,9 +87,12 @@ $db['default'] = array(
 	'username' => 'root',
 	'password' => '',
 	'database' => 'job',
-	/*'username' => 'luckydnp_jobs',
-	'password' => 'jobs@2017$',
-	'database' => 'luckydnp_jobs',*/
+
+
+
+    /*'username' => 'id518198_luckydnp_jobs',
+    'password' => 'luckydnp_jobs',
+    'database' => 'id518198_job',*/
 
 
 	'dbdriver' => 'mysqli',

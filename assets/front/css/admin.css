@@ -1,9 +1,22 @@
 @media (min-width: 1600px) {
-	.container{
+	/*.container{
 		width:1600px !important;
-	}
+	}*/
 	.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
 		vertical-align: bottom !important;
 		text-align: center !important;
 	}
+}
+#payment-modal .modal-dialog{
+	margin-top: 100px;
+}
+
+.apply-job-modal #payment-form {
+	padding: 30px;
+}
+.apply-job-modal input {
+	background-color: #ffffff;
+}
+table{
+	font-size: 12px !important;
 }

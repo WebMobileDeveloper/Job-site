@@ -1,30 +1,38 @@
-<style>
-    dd span{
-        width:15%;
-        display: inline-block;
-        background-color: #00a7d0;
-    }
-</style>
-<div class="col-md-10 col-sm-10 col-xs-12">
-    <div class="job-short-detail">
+
+
+<div class="job-short-detail"><!--
+    <div class="heading-inner">
+        <p class="title">Dashboard</p>
+    </div>-->
+    <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-2 col-sm-offset-2">
         <div class="heading-inner">
-            <p class="title">Dashboard</p>
+            <p class="title">total users</p>
         </div>
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <dl>
-                <dt>Total users:</dt>
-                <dd>&emsp;&emsp;Sellers&emsp; : &emsp;<?php echo $userCounts['seller']; ?>
-                    &emsp;&emsp;Customers &emsp;:&emsp;<?php echo $userCounts['customer']; ?></dd>
+        <dl>
+            <dt>Sellers:</dt>
+            <dd><?php echo $userCounts['seller']; ?></dd>
+            <dt>Customers:</dt>
+            <dd><?php echo $userCounts['customer']; ?></dd>
 
-                <dt>Total Posts:</dt>
-                <dd>&emsp;&emsp;Jobs &emsp;:&emsp;<?php echo $postCounts['job']; ?>
-                    &emsp;&emsp;Educations &emsp;:&emsp;<?php echo $postCounts['education']; ?>
-                    &emsp;&emsp;Properties &emsp;:&emsp;<?php echo $postCounts['property']; ?></dd>
+        </dl>
+    </div>
 
-            </dl>
+    <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-2 col-sm-offset-2" style="margin-top: 30px;">
+        <div class="heading-inner">
+            <p class="title">Total Posts</p>
         </div>
-
+        <dl>
+            <dt>Jobs</dt>
+            <dd><?php echo $postCounts['job']; ?></dd>
+            <dt>Educations</dt>
+            <dd><?php echo $postCounts['education']; ?></dd>
+            <dt>Properties</dt>
+            <dd><?php echo $postCounts['property']; ?></dd>
+        </dl>
     </div>
 </div>
+
+</div>
+
 
 

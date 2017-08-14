@@ -87,4 +87,14 @@ class Home extends Front_Controller {
         }
     }
 
+    /*public function run(){
+        $this->db->select('country_id, region_id');
+        $this->db->group_by('region_id');
+        $radios=$this->db->get('radios')->result();
+        foreach ($radios as $rad){
+            $this->db->where('id',$rad->region_id);
+            $this->db->set('country_id',$rad->country_id);
+            $this->db->update('regions');
+        }
+    }*/
 }

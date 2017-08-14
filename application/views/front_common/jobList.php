@@ -16,7 +16,7 @@ $typeColor = array("jt-full-time-color", "jt-part-time-color", "jt-remote-color"
                                 <i class="icon-magnifying-glass"></i>
                             </div>
                         </div>
-                        <div class="col-md-3 col-sm-3 col-xs-12 nopadding">
+                        <div class="col-md-4 col-sm-4 col-xs-12 nopadding">
                             <div class="form-group">
                                 <select class="select-category form-control" name="category">
                                     <option value=""></option>
@@ -32,12 +32,7 @@ $typeColor = array("jt-full-time-color", "jt-part-time-color", "jt-remote-color"
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-3 col-sm-3 col-xs-12 nopadding">
-                            <div class="form-group">
-                                <input type="text" class="form-control" value="Malaysia">
-                            </div>
-                        </div>
-                        <div class="col-md-2 col-sm-2 col-xs-12 nopadding">
+                        <div class="col-md-4 col-sm-4 col-xs-12 nopadding">
                             <div class="form-group form-action">
                                 <button type="submit" id='search_button' class="btn btn-default btn-search-submit">Search <i class="fa fa-angle-right"></i></button>
                             </div>

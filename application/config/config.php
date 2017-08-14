@@ -24,8 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['base_url'] = 'http://localhost:82/';
-//$config['base_url'] = 'http://webarian.in/jobs/';
-
+//$config['base_url'] = 'https://my-simple-website.000webhostapp.com/';
 /*
 |--------------------------------------------------------------------------
 | Index File

@@ -87,6 +87,25 @@
                 <li><a href="<?php echo site_url("admin"); ?>"> <img src="<?php echo ASSETS_ROOT; ?>images/logo.png" alt="logo" class="img-responsive"> </a></li>
             </ul>
             <ul class="menu-links pull-right">
+                <li ><a href="javascript:void(0)">Dashboard<i class="fa fa-angle-down fa-indicator"></i></a>
+                    <ul class="drop-down-multilevel">
+                        <li><a href="<?php echo site_url('admin'); ?>">Site Info</a></li>
+                        <li><a href="<?php echo site_url('admin/home/edit'); ?>">admin setting</a></li>
+                    </ul>
+                </li>
+                <li ><a href="javascript:void(0)">Users<i class="fa fa-angle-down fa-indicator"></i></a>
+                    <ul class="drop-down-multilevel">
+                        <li><a href="<?php echo site_url('admin/home/sellers'); ?>">Sellers</a></li>
+                        <li><a href="<?php echo site_url('admin/home/customers'); ?>">Customers</a></li>
+                    </ul>
+                </li>
+                <li ><a href="javascript:void(0)">Posts<i class="fa fa-angle-down fa-indicator"></i></a>
+                    <ul class="drop-down-multilevel">
+                        <li><a href="<?php echo site_url('admin/home/allPosts'); ?>">all posts</a></li>
+                        <li><a href="<?php echo site_url('admin/home/featuredPosts'); ?>">featured posts</a></li>
+                    </ul>
+                </li>
+                <li><a href="<?php echo site_url('admin/home/payment'); ?>">Payment</a></li>
                 <li class="no-bg login-btn-no-bg"><a href="<?php echo site_url('admin/auth/signout'); ?>" class="login-header-btn"><i class="fa fa-power-off"></i> Log Out</a></li>
             </ul>
         </section>

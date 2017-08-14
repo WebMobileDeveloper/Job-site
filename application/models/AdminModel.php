@@ -74,40 +74,37 @@ class AdminModel extends CI_Model
     }
 
     function getPosts(){
-        $data=array();
         $this->db->from('tbl_post');
         $this->db->join('tbl_users_data', 'tbl_users_data.user_id = tbl_post.user_id AND tbl_users_data.company_type=tbl_post.post_type');
         $result=$this->db->get()->result();
-        /*foreach ($result as $row){
-            $data[$row->id]['account']=$row;
-            $this->db->from('tbl_users_data');
-            $this->db->where('user_id',$row->id);
-            $companys=$this->db->get()->result();
-            foreach ($companys as $company){
-                $data[$row->id][$company->company_type]=$company;
-            }
-        }*/
         return $result;
     }
 
     function getFeaturedPosts(){
-        $data=array();
         $this->db->from('tbl_post');
         $this->db->where('featured',1);
         $this->db->join('tbl_users_data', 'tbl_users_data.user_id = tbl_post.user_id AND tbl_users_data.company_type=tbl_post.post_type');
         $result=$this->db->get()->result();
-        /*foreach ($result as $row){
-            $data[$row->id]['account']=$row;
-            $this->db->from('tbl_users_data');
-            $this->db->where('user_id',$row->id);
-            $companys=$this->db->get()->result();
-            foreach ($companys as $company){
-                $data[$row->id][$company->company_type]=$company;
-            }
-        }*/
         return $result;
     }
 
+    function getSellerData($id){
+        $data=array();
+        $this->db->from('tbl_users');
+        $this->db->where('usertype','seller');
+        $this->db->where('id',$id);
+        $result=$this->db->get()->result()[0];
+        return $result;
+    }
+    function savePayment($id, $payment_method,$bank,$package,$slip_name,$note){
+        $this->db->where('id',$id);
+        $this->db->set('payment_method',$payment_method);
+        $this->db->set('bank',$bank);
+        $this->db->set('package',$package);
+        $this->db->set('slip_name',$slip_name);
+        $this->db->set('note',$note);
+        $this->db->update('tbl_users');
+    }
 
 
 

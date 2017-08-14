@@ -18,7 +18,7 @@ $indexArr = array("bycompany", "bycategory", "bycity", "bytype", "byprice");
                                 <i class="icon-magnifying-glass"></i>
                             </div>
                         </div>
-                        <div class="col-md-3 col-sm-3 col-xs-12 nopadding">
+                        <div class="col-md-4 col-sm-4 col-xs-12 nopadding">
                             <div class="form-group">
                                 <select class="select-category form-control" name="category">
                                     <option value="">&nbsp;</option>
@@ -32,13 +32,7 @@ $indexArr = array("bycompany", "bycategory", "bycity", "bytype", "byprice");
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-3 col-sm-3 col-xs-12 nopadding">
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="keyword" placeholder="Search Keyword"
-                                       value="Malaysia" readonly>
-                            </div>
-                        </div>
-                        <div class="col-md-2 col-sm-2 col-xs-12 nopadding">
+                        <div class="col-md-4 col-sm-4 col-xs-12 nopadding">
                             <div class="form-group form-action">
                                 <button type="submit" id='search_button' class="btn btn-default btn-search-submit">Search <i class="fa fa-angle-right"></i></button>
                             </div>
@@ -178,7 +172,7 @@ $indexArr = array("bycompany", "bycategory", "bycity", "bytype", "byprice");
                         <div class="content-area">
                             <div class="">
                                 <h4><a href=""> Graphic Designer </a></h4>
-                                <p> Confidential Int. Pvt. Ltd. Pakistan </p>
+                                <p> Confidential Int. Pvt. Ltd. Malaysia </p>
                             </div>
                             <div class="feature-post-meta"><a href=""> <i class="fa fa-clock-o"></i> 1 days ago</a>
                                 <a href="" class="mata-detail part">Part Time</a></div>
@@ -195,7 +189,7 @@ $indexArr = array("bycompany", "bycategory", "bycity", "bytype", "byprice");
                         <div class="content-area">
                             <div class="">
                                 <h4><a href=""> Software Engineer </a></h4>
-                                <p> Confidential Int. Pvt. Ltd. Pakistan </p>
+                                <p> Confidential Int. Pvt. Ltd. Malaysia </p>
                             </div>
                             <div class="feature-post-meta"><a href=""> <i class="fa fa-clock-o"></i> 5 days ago</a>
                                 <a href="" class="mata-detail remote">Remote</a></div>
@@ -212,7 +206,7 @@ $indexArr = array("bycompany", "bycategory", "bycity", "bytype", "byprice");
                         <div class="content-area">
                             <div class="">
                                 <h4><a href=""> Netword Administrator </a></h4>
-                                <p> Confidential Int. Pvt. Ltd. Pakistan </p>
+                                <p> Confidential Int. Pvt. Ltd. Malaysia </p>
                             </div>
                             <div class="feature-post-meta"><a href=""> <i class="fa fa-clock-o"></i> 2 days ago</a>
                                 <a href="" class="mata-detail full-time">Full Time</a></div>
@@ -228,7 +222,7 @@ $indexArr = array("bycompany", "bycategory", "bycity", "bytype", "byprice");
                         <div class="content-area">
                             <div class="">
                                 <h4><a href=""> managing director </a></h4>
-                                <p> Kings Int. Pvt. Ltd. Pakistan </p>
+                                <p> Kings Int. Pvt. Ltd. Malaysia </p>
                             </div>
                             <div class="feature-post-meta"><a href=""> <i class="fa fa-clock-o"></i> 2 days ago</a>
                                 <a href="" class="mata-detail full-time">full Time</a></div>
@@ -244,7 +238,7 @@ $indexArr = array("bycompany", "bycategory", "bycity", "bytype", "byprice");
                         <div class="content-area">
                             <div class="">
                                 <h4><a href=""> 54/A Ready Flat in Miami Beach </a></h4>
-                                <p> Confidential Int. Pvt. Ltd. Pakistan </p>
+                                <p> Confidential Int. Pvt. Ltd. Malaysia </p>
                             </div>
                             <div class="feature-post-meta"><a href=""> <i class="fa fa-clock-o"></i> 2 days ago</a>
                                 <a href="" class="mata-detail remote">Freelancer</a></div>
@@ -261,7 +255,7 @@ $indexArr = array("bycompany", "bycategory", "bycity", "bytype", "byprice");
                         <div class="content-area">
                             <div class="">
                                 <h4><a href=""> Documentation Expert </a></h4>
-                                <p> XCosdo Int. Pvt. Ltd. Pakistan </p>
+                                <p> XCosdo Int. Pvt. Ltd. Malaysia </p>
                             </div>
                             <div class="feature-post-meta"><a href=""> <i class="fa fa-clock-o"></i> 10 days ago</a>
                                 <a href="" class="mata-detail intern">Intern</a></div>
