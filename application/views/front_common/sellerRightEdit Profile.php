@@ -3,7 +3,7 @@
         <p class="title">Edit Profile</p>
     </div>
     <div class="profile-edit row">
-        <form id="profile_form" action="<?php echo site_url('home/save_seller_profile'); ?>" method="post" enctype="multipart/form-data">
+        <form id="profile_form" action="<?php echo site_url('sellerhome/save_seller_profile'); ?>" method="post" enctype="multipart/form-data">
 
             <div class="col-md-6 col-sm-12">
                 <div class="form-group">
@@ -78,7 +78,7 @@
                     phone: "required",
                     city: "required",
                     company_name: "required",
-                    address: "required",
+                    address: "required"
                 },
                 errorPlacement: function (error, element) {
                 }
@@ -90,12 +90,10 @@
                 return false;
             }
         });
-
-
     });
 </script>
 <!-- CK-EDITOR -->
-<script src="http://cdn.ckeditor.com/4.5.10/standard/ckeditor.js"></script>
+<!--<script src="http://cdn.ckeditor.com/4.5.10/standard/ckeditor.js"></script>
 <script type="text/javascript">
     CKEDITOR.replace('about_company');
-</script>
+</script>-->

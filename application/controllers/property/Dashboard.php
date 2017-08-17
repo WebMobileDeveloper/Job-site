@@ -13,22 +13,23 @@ class Dashboard extends Front_Controller
         if ($this->session->userdata('login_user_id') == '') {
             redirect("auth");
         }
-        $this->load->model("UserModel");
         $this->load->model('property/PostModel');
         $this->data['client_info'] = $this->UserModel->getClientDetail($this->login_user_id,'property');
+        $this->data['top_menu']='Properties';
+        $this->data['selected_menu']='';
     }
 
     public function index()
     {
         $this->data['selected_menu'] = 'Dashboard';
-        $this->front_showpage('property/dashboard', $this->data);
+        $this->seller_showpage('property/dashboard', $this->data);
     }
 
     public function edit_profile()
     {
         $this->data['selected_menu'] = 'Edit Profile';
         $this->data['title'] = 'Edit Profile of Property Company';
-        $this->front_showpage('property/dashboard', $this->data);
+        $this->seller_showpage('property/dashboard', $this->data);
     }
 
 
@@ -39,7 +40,7 @@ class Dashboard extends Front_Controller
         $this->load->model('property/PostModel');
 
         $this->data['allResume']=$this->PostModel->getAllResume($this->login_user_id);
-        $this->front_showpage('property/dashboard', $this->data);
+        $this->seller_showpage('property/dashboard', $this->data);
     }
     public function deleteResume($id,$file_name)
     {
@@ -62,7 +63,7 @@ class Dashboard extends Front_Controller
 
         $this->data['selected_menu'] = 'Active Properties';
         $this->data['title'] = 'Active Properties';
-        $this->front_showpage('property/dashboard', $this->data);
+        $this->seller_showpage('property/dashboard', $this->data);
     }
 
     public function featured_posts()
@@ -76,7 +77,7 @@ class Dashboard extends Front_Controller
 
         $this->data['selected_menu'] = 'Featured Properties';
         $this->data['title'] = 'Featured Properties';
-        $this->front_showpage('property/dashboard', $this->data);
+        $this->seller_showpage('property/dashboard', $this->data);
     }
 
     public function save_image($type, $id)

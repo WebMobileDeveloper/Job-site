@@ -35,7 +35,7 @@ class Auth extends Front_Controller {
                 'login_user_fullname'     => $result->fullname
             );
             $this->session->set_userdata($newdata);
-            $result1['status'] = "ok";
+            $result1['status'] = $result->usertype;
         } else {
             $result1['status'] = "fail";
         }

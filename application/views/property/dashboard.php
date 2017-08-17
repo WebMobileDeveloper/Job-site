@@ -88,27 +88,6 @@
                         </div>
                     </div>
 
-                    <div class="profile-nav">
-                        <div class="panel">
-                            <ul class="nav nav-pills nav-stacked">
-                                <li <?php echo ($selected_menu == 'Dashboard') ? "class='active'" : ""; ?>>
-                                    <a href="<?php echo site_url('property/dashboard'); ?>"> <i class="fa fa-user"></i> Property Company Dashboard</a>
-                                </li>
-                                <li <?php echo ($selected_menu == 'Edit Profile') ? "class='active'" : ""; ?>>
-                                    <a href="<?php echo site_url('property/dashboard/edit_profile'); ?>"> <i class="fa fa-edit"></i> Edit Profile</a>
-                                </li>
-                                <li <?php echo ($selected_menu == 'Resume') ? "class='active'" : ""; ?>>
-                                    <a href="<?php echo site_url('property/dashboard/resume'); ?>"> <i class="fa fa-file-o"></i>Customer Resumes </a>
-                                </li>
-                                <li <?php echo ($selected_menu == 'Active Properties') ? "class='active'" : ""; ?>>
-                                    <a href="<?php echo site_url('property/dashboard/active_posts'); ?>"> <i class="fa  fa-list-ul"></i> Active Properties</a>
-                                </li>
-                                <li <?php echo ($selected_menu == 'Featured Properties') ? "class='active'" : ""; ?>>
-                                    <a href="<?php echo site_url('property/dashboard/featured_posts'); ?>"> <i class="fa  fa-list-alt"></i> Featured Properties</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
                 <?php  include("right".$selected_menu.".php"); ?>
             </div>

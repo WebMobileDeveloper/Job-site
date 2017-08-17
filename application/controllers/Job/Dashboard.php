@@ -13,22 +13,23 @@ class Dashboard extends Front_Controller
         if ($this->session->userdata('login_user_id') == '') {
             redirect("auth");
         }
-        $this->load->model("UserModel");
         $this->load->model('job/PostModel');
         $this->data['client_info'] = $this->UserModel->getClientDetail($this->login_user_id,'job');
+        $this->data['top_menu'] = 'Jobs';
+        $this->data['selected_menu']='';
     }
 
     public function index()
     {
         $this->data['selected_menu'] = 'Dashboard';
-        $this->front_showpage('job/dashboard', $this->data);
+        $this->seller_showpage('job/dashboard', $this->data);
     }
 
     public function edit_profile()
     {
         $this->data['selected_menu'] = 'Edit Profile';
         $this->data['title'] = 'Edit Profile of Job Company';
-        $this->front_showpage('job/dashboard', $this->data);
+        $this->seller_showpage('job/dashboard', $this->data);
         //$this->front_showpage('job/edit_profile',$this->data);
     }
 
@@ -40,7 +41,7 @@ class Dashboard extends Front_Controller
         $this->load->model('job/PostModel');
 
         $this->data['allResume']=$this->PostModel->getAllResume($this->login_user_id);
-        $this->front_showpage('job/dashboard', $this->data);
+        $this->seller_showpage('job/dashboard', $this->data);
     }
     public function deleteResume($id,$file_name)
     {
@@ -63,7 +64,7 @@ class Dashboard extends Front_Controller
 
         $this->data['selected_menu'] = 'Active Jobs';
         $this->data['title'] = 'Active Jobs';
-        $this->front_showpage('job/dashboard', $this->data);
+        $this->seller_showpage('job/dashboard', $this->data);
     }
 
     public function featured_posts()
@@ -77,7 +78,7 @@ class Dashboard extends Front_Controller
 
         $this->data['selected_menu'] = 'Featured Jobs';
         $this->data['title'] = 'Featured Jobs';
-        $this->front_showpage('job/dashboard', $this->data);
+        $this->seller_showpage('job/dashboard', $this->data);
     }
 
     public function save_image($type, $id)

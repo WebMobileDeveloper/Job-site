@@ -1,11 +1,13 @@
 <?php
 require_once APPPATH . "core/Front_Controller.php";
 
-class Home extends Front_Controller {
+class SellerHome extends Front_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model("UserModel");
         $this->load->model('PostModel');
+
+        $this->data['top_menu'] = 'Dashboard';
     }
 
     public function index() {
@@ -15,8 +17,8 @@ class Home extends Front_Controller {
                 $user_id = $this->login_user_id;
             }
         }
-        $data['postData']=$this->PostModel->getAllPost();
-        $this->front_showpage('home',$data);
+        //$data['postData']=$this->PostModel->getAllPost();
+        $this->sellerDashboard();
     }
 
     public function search_job()
@@ -68,7 +70,7 @@ class Home extends Front_Controller {
                 $this->data['title'] = 'The Resumes You Got';
                 break;
         }
-        $this->front_showpage('front_common/sellerDashboard', $this->data);
+        $this->seller_showpage('front_common/sellerDashboard', $this->data);
     }
 
     public function save_seller_profile()

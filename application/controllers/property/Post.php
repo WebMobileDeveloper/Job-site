@@ -8,6 +8,9 @@ class Post extends Front_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->data['client_info'] = $this->UserModel->getClientData($this->login_user_id);
+        $this->data['top_menu']='Properties';
+        $this->data['selected_menu']='';
     }
 
     public function index()
@@ -15,7 +18,8 @@ class Post extends Front_Controller
         if (!$this->login_user_id) {
             redirect("auth");
         }
-        $this->front_showpage('property/post');
+        $this->data['selected_menu']='Post';
+        $this->seller_showpage('property/post',$this->data);
         $this->load->view('property/postjs');
     }
 
@@ -32,21 +36,21 @@ class Post extends Front_Controller
 
     public function post_detail($post_id, $client_id)
     {
-        $data['post_id'] = $post_id;
+        $this->data['post_id'] = $post_id;
         $this->load->model('property/PostModel');
-        $data['post_detail'] = $this->PostModel->getPostDetailById($post_id);
-        $data["featured_posts"] = $this->PostModel->getFeaturedPostsById($client_id, 5, 1);
+        $this->data['post_detail'] = $this->PostModel->getPostDetailById($post_id);
+        $this->data["featured_posts"] = $this->PostModel->getFeaturedPostsById($client_id, 5, 1);
 
         $this->load->model("UserModel");
-        $data['client_info'] = $this->UserModel->getClientDetail($client_id, 'property');
-        $this->front_showpage('property/postDetail', $data);
+        $this->data['client_info'] = $this->UserModel->getClientDetail($client_id, 'property');
+        $this->seller_showpage('property/postDetail', $this->data);
     }
 
     public function getAppliedUsers($post_id)
     {
         $this->load->model('property/PostModel');
-        $data['appliedUserData'] = $this->PostModel->getAppliedUserData($post_id);
-        $this->front_showpage('property/appliedCustomers', $data);
+        $this->data['appliedUserData'] = $this->PostModel->getAppliedUserData($post_id);
+        $this->seller_showpage('property/appliedCustomers', $this->data);
     }
 
     public function hire($applied_id, $applied_post_id)

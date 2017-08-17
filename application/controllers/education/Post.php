@@ -8,6 +8,9 @@ class Post extends Front_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->data['client_info'] = $this->UserModel->getClientData($this->login_user_id);
+        $this->data['top_menu']='Educations';
+        $this->data['selected_menu']='';
     }
 
     public function index()
@@ -15,7 +18,8 @@ class Post extends Front_Controller
         if (!$this->login_user_id) {
             redirect("auth");
         }
-        $this->front_showpage('education/post');
+        $this->data['selected_menu']='Post';
+        $this->seller_showpage('education/post',$this->data);
         $this->load->view('education/postjs');
     }
 
@@ -31,21 +35,21 @@ class Post extends Front_Controller
 
     public function post_detail($post_id, $client_id)
     {
-        $data['post_id'] = $post_id;
+        $this->data['post_id'] = $post_id;
         $this->load->model('education/PostModel');
-        $data['post_detail'] = $this->PostModel->getPostDetailById($post_id);
-        $data["featured_posts"] = $this->PostModel->getFeaturedPostsById($client_id, 5, 1);
+        $this->data['post_detail'] = $this->PostModel->getPostDetailById($post_id);
+        $this->data["featured_posts"] = $this->PostModel->getFeaturedPostsById($client_id, 5, 1);
 
         $this->load->model("UserModel");
-        $data['client_info'] = $this->UserModel->getClientDetail($client_id, 'education');
-        $this->front_showpage('education/postDetail', $data);
+        $this->data['client_info'] = $this->UserModel->getClientDetail($client_id, 'education');
+        $this->seller_showpage('education/postDetail', $this->data);
     }
 
     public function getAppliedUsers($post_id)
     {
         $this->load->model('education/PostModel');
-        $data['appliedUserData'] = $this->PostModel->getAppliedUserData($post_id);
-        $this->front_showpage('education/appliedCustomers', $data);
+        $this->data['appliedUserData'] = $this->PostModel->getAppliedUserData($post_id);
+        $this->seller_showpage('education/appliedCustomers', $this->data);
     }
 
     public function hire($applied_id, $applied_post_id)
@@ -84,13 +88,13 @@ class Post extends Front_Controller
 
     /*public function user_post_detail($post_id, $client_id, $customer_id = -1)
     {
-        $data['post_id'] = $post_id;
+        $this->data['post_id'] = $post_id;
         $this->load->model('job/PostModel');
-        $data['post_detail'] = $this->PostModel->getPostDetailById($post_id, $customer_id);
-        $data["featured_posts"] = $this->PostModel->getFeaturedPostsById($client_id, 5, 1);
+        $this->data['post_detail'] = $this->PostModel->getPostDetailById($post_id, $customer_id);
+        $this->data["featured_posts"] = $this->PostModel->getFeaturedPostsById($client_id, 5, 1);
 
         $this->load->model("UserModel");
-        $data['client_info'] = $this->UserModel->getClientData($client_id);
-        $this->front_showpage('job/userPostDetail', $data);
+        $this->data['client_info'] = $this->UserModel->getClientData($client_id);
+        $this->seller_showpage('job/userPostDetail', $this->data);
     }*/
 }

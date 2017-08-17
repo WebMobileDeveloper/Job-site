@@ -88,27 +88,7 @@
                         </div>
                     </div>
 
-                    <div class="profile-nav">
-                        <div class="panel">
-                            <ul class="nav nav-pills nav-stacked">
-                                <li <?php echo ($selected_menu == 'Dashboard') ? "class='active'" : ""; ?>>
-                                    <a href="<?php echo site_url('job/dashboard'); ?>"> <i class="fa fa-user"></i> Job Company Dashboard</a>
-                                </li>
-                                <li <?php echo ($selected_menu == 'Edit Profile') ? "class='active'" : ""; ?>>
-                                    <a href="<?php echo site_url('job/dashboard/edit_profile'); ?>"> <i class="fa fa-edit"></i> Edit Profile</a>
-                                </li>
-                                <li <?php echo ($selected_menu == 'Resume') ? "class='active'" : ""; ?>>
-                                    <a href="<?php echo site_url('job/dashboard/resume'); ?>"> <i class="fa fa-file-o"></i>Customer Resumes </a>
-                                </li>
-                                <li <?php echo ($selected_menu == 'Active Jobs') ? "class='active'" : ""; ?>>
-                                    <a href="<?php echo site_url('job/dashboard/active_posts'); ?>"> <i class="fa  fa-list-ul"></i> Active Jobs</a>
-                                </li>
-                                <li <?php echo ($selected_menu == 'Featured Jobs') ? "class='active'" : ""; ?>>
-                                    <a href="<?php echo site_url('job/dashboard/featured_posts'); ?>"> <i class="fa  fa-list-alt"></i> Featured Jobs</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+
                 </div>
                 <?php  include("right".$selected_menu.".php"); ?>
             </div>

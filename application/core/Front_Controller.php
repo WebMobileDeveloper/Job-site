@@ -72,6 +72,12 @@ class Front_Controller extends CI_Controller
         $this->load->view($view, $data);
         $this->load->view("front_common/footer", $data);
     }
+    public function seller_showpage($view, $data = false)
+    {
+        $this->load->view("front_common/seller_top_menu", $data);
+        $this->load->view($view, $data);
+        $this->load->view("front_common/seller_footer", $data);
+    }
 
     public function set_session($type, $user_id)
     {

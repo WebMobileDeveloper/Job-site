@@ -13,22 +13,23 @@ class Dashboard extends Front_Controller
         if ($this->session->userdata('login_user_id') == '') {
             redirect("auth");
         }
-        $this->load->model("UserModel");
         $this->load->model('education/PostModel');
         $this->data['client_info'] = $this->UserModel->getClientDetail($this->login_user_id,'education');
+        $this->data['top_menu'] = 'Educations';
+        $this->data['selected_menu']='';
     }
 
     public function index()
     {
         $this->data['selected_menu'] = 'Dashboard';
-        $this->front_showpage('education/dashboard', $this->data);
+        $this->seller_showpage('education/dashboard', $this->data);
     }
 
     public function edit_profile()
     {
         $this->data['selected_menu'] = 'Edit Profile';
         $this->data['title'] = 'Edit Profile of Education Company';
-        $this->front_showpage('education/dashboard', $this->data);
+        $this->seller_showpage('education/dashboard', $this->data);
     }
 
 
@@ -39,7 +40,7 @@ class Dashboard extends Front_Controller
         $this->load->model('education/PostModel');
 
         $this->data['allResume']=$this->PostModel->getAllResume($this->login_user_id);
-        $this->front_showpage('education/dashboard', $this->data);
+        $this->seller_showpage('education/dashboard', $this->data);
 
     }
 
@@ -63,7 +64,7 @@ class Dashboard extends Front_Controller
 
         $this->data['selected_menu'] = 'Active Educations';
         $this->data['title'] = 'Active Educations';
-        $this->front_showpage('education/dashboard', $this->data);
+        $this->seller_showpage('education/dashboard', $this->data);
     }
 
     public function featured_posts()
@@ -77,7 +78,7 @@ class Dashboard extends Front_Controller
 
         $this->data['selected_menu'] = 'Featured Educations';
         $this->data['title'] = 'Featured Educations';
-        $this->front_showpage('education/dashboard', $this->data);
+        $this->seller_showpage('education/dashboard', $this->data);
     }
 
     public function save_image($type, $id)
