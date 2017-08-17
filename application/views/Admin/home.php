@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-md-6 col-sm-7 co-xs-12 text-left">
                 <h3>
-                    <?php echo  ($menu != 'dashboard')?$menu:'site info';  ?>
+                    <?php echo  ($selected_menu != 'dashboard')?$selected_menu:'site info';  ?>
                 </h3>
             </div>
             <div class="col-md-6 col-sm-5 co-xs-12 text-right">
@@ -19,8 +19,8 @@
                         </li>
                         <li><a href="#">Dashboard</a>
                         </li>
-                        <?php if ($menu != 'dashboard') { ?>
-                            <li class="active"><?php echo $menu; ?></li>
+                        <?php if ($selected_menu != 'dashboard') { ?>
+                            <li class="active"><?php echo $selected_menu; ?></li>
                         <?php }else{ ?>
                             <li class="active">site info</li>
                         <?php } ?>
@@ -35,7 +35,7 @@
     <div class="container" style="min-height: 500px;">
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
-                <?php include($menu . ".php"); ?>
+                <?php include($selected_menu . ".php"); ?>
             </div>
         </div>
     </div>

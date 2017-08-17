@@ -1,7 +1,7 @@
 <?php
 require_once APPPATH . "core/Front_Controller.php";
 
-class SellerHome extends Front_Controller {
+class Sellerhome extends Front_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model("UserModel");

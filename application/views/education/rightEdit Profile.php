@@ -149,7 +149,7 @@
     });
 </script>
 <!-- CK-EDITOR -->
-<script src="http://cdn.ckeditor.com/4.5.10/standard/ckeditor.js"></script>
+<script src="<?php echo ASSETS_ROOT; ?>ckeditor/ckeditor.js"></script>
 <script type="text/javascript">
     CKEDITOR.replace('about_company');
 </script>

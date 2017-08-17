@@ -1,8 +1,40 @@
 <?php
 $typeColor = array("jt-full-time-color", "jt-part-time-color", "jt-remote-color", "jt-intern-color");
+$matadetailColor = array("full-time", "intern", "remote", "part");
 $aniType = array("fadeInUp active", "fadeInDown", "fadeInLeft", "fadeInRight", "fadeInUp");
 
 $indexArr = array("bycompany", "bycategory", "bycity", "bytype", "byprice");
+
+function time_elapsed_string($datetime, $full = false)
+{
+    $now = new DateTime;
+    $ago = new DateTime($datetime);
+    $diff = $now->diff($ago);
+
+    $diff->w = floor($diff->d / 7);
+    $diff->d -= $diff->w * 7;
+
+    $string = array(
+        'y' => 'year',
+        'm' => 'month',
+        'w' => 'week',
+        'd' => 'day',
+        'h' => 'hour',
+        'i' => 'minute',
+        's' => 'second',
+    );
+    foreach ($string as $k => &$v) {
+        if ($diff->$k) {
+            $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
+        } else {
+            unset($string[$k]);
+        }
+    }
+
+    if (!$full) $string = array_slice($string, 0, 1);
+    return $string ? implode(', ', $string) . ' ago' : 'just now';
+}
+
 ?>
 <section class="main-section parallex">
     <div class="container">
@@ -10,7 +42,7 @@ $indexArr = array("bycompany", "bycategory", "bycity", "bytype", "byprice");
             <div class="col-md-10 col-sm-12 col-md-offset-1 col-xs-12 nopadding">
                 <div class="search-form-contaner">
                     <h1 class="search-main-title"> Ten million success stories. Start yours today </h1>
-                    <form class="form-inline" action="<?php echo site_url('home/search_job')?>" method="post">
+                    <form class="form-inline" action="<?php echo site_url('home/search_job') ?>" method="post">
                         <div class="col-md-4 col-sm-4 col-xs-12 nopadding">
                             <div class="form-group">
                                 <input type="text" class="form-control" name="keyword" placeholder="Search Keyword"
@@ -28,13 +60,15 @@ $indexArr = array("bycompany", "bycategory", "bycity", "bytype", "byprice");
                                     foreach ($this->categories as $category) { ?>
                                         <option value="<?php echo $i;
                                         echo ($i == $selected) ? ' selected' : ''; ?>"><?php echo $category; ?></option>
-                                    <?php $i++; } ?>
+                                        <?php $i++;
+                                    } ?>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12 nopadding">
                             <div class="form-group form-action">
-                                <button type="submit" id='search_button' class="btn btn-default btn-search-submit">Search <i class="fa fa-angle-right"></i></button>
+                                <button type="submit" id='search_button' class="btn btn-default btn-search-submit">
+                                    Search <i class="fa fa-angle-right"></i></button>
                             </div>
                         </div>
                     </form>
@@ -57,9 +91,12 @@ $indexArr = array("bycompany", "bycategory", "bycity", "bytype", "byprice");
                         <div class="panel-heading">
                             <!-- Tabs -->
                             <ul class="nav panel-tabs">
-                                <li class="active"><a href="#tab0" data-toggle="tab"><i class="icofont icon-ribbon"></i><span class="hidden-xs hidden-sm">Jobs</span></a></li>
-                                <li><a href="#tab1" data-toggle="tab"><i class="icofont icon-layers"></i><span class="hidden-xs hidden-sm">Educations</span></a></li>
-                                <li><a href="#tab2" data-toggle="tab"><i class="icofont icon-global"></i><span class="hidden-xs hidden-sm">Properties</span></a></li><!--
+                                <li class="active"><a href="#tab0" data-toggle="tab"><i class="icofont icon-ribbon"></i><span
+                                                class="hidden-xs hidden-sm">Jobs</span></a></li>
+                                <li><a href="#tab1" data-toggle="tab"><i class="icofont icon-layers"></i><span
+                                                class="hidden-xs hidden-sm">Educations</span></a></li>
+                                <li><a href="#tab2" data-toggle="tab"><i class="icofont icon-global"></i><span
+                                                class="hidden-xs hidden-sm">Properties</span></a></li><!--
                                 <li><a href="#tab3" data-toggle="tab"><i class="icofont icon-linegraph"></i><span class="hidden-xs hidden-sm">By Type</span></a></li>
                                 <li><a href="#tab4" data-toggle="tab"><i class="icofont icon-briefcase"></i><span class="hidden-xs hidden-sm">By Price</span></a></li>-->
                             </ul>
@@ -68,36 +105,53 @@ $indexArr = array("bycompany", "bycategory", "bycity", "bytype", "byprice");
                     <div class="panel-body">
                         <div class="tab-content">
                             <?php
-                            $type=array('job','education','property');
+                            $type = array('job', 'education', 'property');
                             for ($i = 0; $i < 3; $i++) { ?>
-                                <div class="tab-pane animated <?php echo $aniType[$i]; ?>" id="tab<?php echo $i; ?>"> <?php
+                                <div class="tab-pane animated <?php echo $aniType[$i]; ?>"
+                                     id="tab<?php echo $i; ?>"> <?php
                                     foreach ($postData[$type[$i]] as $post) { ?>
                                         <div class="col-md-12 col-sm-12 col-xs-12 nopadding">
                                             <div class="job-box">
                                                 <div class="col-md-1 col-sm-1 col-xs-12 nopadding hidden-xs hidden-sm">
                                                     <div class="comp-logo">
-                                                        <img src="<?php echo ASSETS_ROOT; ?>profile image/client/logo_image/<?php echo $post->user_id;?>_<?php echo $type[$i]; ?>.jpg"
-                                                             onerror=" this.src = '<?php echo ASSETS_ROOT; ?>images/company/default_profile.png'" class="img-responsive"/>
+                                                        <img src="<?php echo ASSETS_ROOT; ?>profile image/client/logo_image/<?php echo $post->user_id; ?>_<?php echo $type[$i]; ?>.jpg"
+                                                             onerror=" this.src = '<?php echo ASSETS_ROOT; ?>images/company/default_profile.png'"
+                                                             class="img-responsive"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                                     <div class="job-title-box">
-                                                        <a href="#">
+                                                        <a href="<?php
+                                                        if ($this->login_user_id) {
+                                                            if ($this->login_user_type == 'customer' || $this->login_user_id != $post->user_id) {
+                                                                echo site_url('customer/'.$post->post_type.'/user_post_detail/' . $post->post_id . '/' . $post->user_id . "/" . $this->login_user_id);
+                                                            } else {
+                                                                echo site_url($post->post_type.'/post/post_detail/' . $post->post_id . '/' . $post->user_id);
+                                                            }
+                                                        } else {
+                                                            echo site_url('home/user_post_detail/' . $post->post_id . '/' . $post->user_id);
+                                                        }
+                                                        ?>">
                                                             <div class="job-title"> <?php echo $post->title; ?></div>
                                                         </a>
-                                                        <a href="#"><span class="comp-name"><?php echo $post->company_name . "   Malaysia" ; ?> </span></a>
+                                                        <a ><span
+                                                                    class="comp-name"><?php echo $post->company_name . "   Malaysia"; ?> </span></a>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3 col-sm-3 col-xs-6">
-                                                    <div class="job-location"><i class="fa fa-location-arrow"></i> <?php echo $post->city; ?></div>
+                                                    <div class="job-location"><i
+                                                                class="fa fa-location-arrow"></i> <?php echo $post->city; ?>
+                                                    </div>
                                                 </div>
                                                 <div class="col-md-2 col-sm-2 col-xs-6">
-                                                    <div class="job-type <?php echo $typeColor[$post->type]; ?>"><i class="fa fa-clock-o"></i>
+                                                    <div class="job-type <?php echo $typeColor[$post->type]; ?>"><i
+                                                                class="fa fa-clock-o"></i>
                                                         <?php echo $this->job_types[$post->type]; ?>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2 col-sm-2 col-xs-12">
-                                                    <button class="btn btn-primary btn-custom">Apply Now</button>
+                                                    <a class="btn btn-default show-modal" post_id="<?php echo $post->post_id; ?>" client_id="<?php echo $post->user_id; ?>"
+                                                       style="margin-top: 10px;"> Apply Now</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -160,111 +214,51 @@ $indexArr = array("bycompany", "bycategory", "bycity", "bytype", "byprice");
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="Heading-title black">
-                        <h1>Featured Jobs</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.At vero
-                            eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium</p>
+                        <h1>Featured Posts</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium</p>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                    <div class="featured-image-box">
-                        <div class="img-box"><img src="<?php echo ASSETS_ROOT; ?>images/company/1.png" class="img-responsive center-block"
-                                                  alt=""></div>
-                        <div class="content-area">
-                            <div class="">
-                                <h4><a href=""> Graphic Designer </a></h4>
-                                <p> Confidential Int. Pvt. Ltd. Malaysia </p>
+                <?php
+                $i=0;
+                $limit=(count($featuredPosts)<6)?3:6;
+                foreach ($featuredPosts as $post) {
+                    $i++;
+                    if($i>$limit)break;
+                    ?>
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="featured-image-box">
+                            <div class="img-box"><img
+                                        src="<?php echo ASSETS_ROOT; ?>profile image/client/profile_image/<?php echo $post->user_id; ?>_<?php echo $type[$post->type]; ?>.jpg"
+                                        onerror=" this.src = '<?php echo ASSETS_ROOT; ?>images/company/default_profile.png'"
+                                        style="max-height:105px;" class="img-responsive center-block" alt="">
                             </div>
-                            <div class="feature-post-meta"><a href=""> <i class="fa fa-clock-o"></i> 1 days ago</a>
-                                <a href="" class="mata-detail part">Part Time</a></div>
-                            <div class="feature-post-meta-bottom"><span>$500<small>/ month</small></span> <a href=""
-                                                                                                             class="apply pull-right">
-                                    Apply Now</a></div>
+                            <div class="content-area">
+                                <div class="">
+                                    <h4><a href="<?php
+                                        if ($this->login_user_id) {
+                                            if ($this->login_user_type == 'customer' || $this->login_user_id != $post->user_id) {
+                                                echo site_url('customer/'.$post->post_type.'/user_post_detail/' . $post->post_id . '/' . $post->user_id . "/" . $this->login_user_id);
+                                            } else {
+                                                echo site_url($post->post_type.'/post/post_detail/' . $post->post_id . '/' . $post->user_id);
+                                            }
+                                        } else {
+                                            echo site_url('home/user_post_detail/' . $post->post_id . '/' . $post->user_id);
+                                        }
+                                        ?>"> <?php echo $post->title; ?> </a></h4>
+                                    <p> <?php echo $post->company_name; ?> Malaysia </p>
+                                </div>
+                                <div class="feature-post-meta"><a > <i class="fa fa-clock-o"></i> <?php echo time_elapsed_string($post->posted_date); ?></a>
+                                    <a class="mata-detail <?php echo $matadetailColor[$post->type]; ?>"><?php echo $this->job_types[$post->type]; ?></a>
+                                    <a class="mata-detail1 <?php echo $post->post_type; ?>"><?php echo $post->post_type; ?></a>
+                                </div>
+                                <div class="feature-post-meta-bottom"><span>$<?php echo $post->price; ?><small>/ month</small></span>
+                                    <a class="btn btn-default pull-right show-modal" post_id="<?php echo $post->post_id; ?>" client_id="<?php echo $post->user_id; ?>"
+                                        style="margin-top: 0px;"> Apply Now</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                    <div class="featured-image-box">
-                        <div class="img-box"><img src="<?php echo ASSETS_ROOT; ?>images/company/4.png" class="img-responsive center-block"
-                                                  alt=""></div>
-                        <div class="content-area">
-                            <div class="">
-                                <h4><a href=""> Software Engineer </a></h4>
-                                <p> Confidential Int. Pvt. Ltd. Malaysia </p>
-                            </div>
-                            <div class="feature-post-meta"><a href=""> <i class="fa fa-clock-o"></i> 5 days ago</a>
-                                <a href="" class="mata-detail remote">Remote</a></div>
-                            <div class="feature-post-meta-bottom"><span>$900<small>/ month</small></span> <a href=""
-                                                                                                             class="apply pull-right">
-                                    Apply Now</a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                    <div class="featured-image-box">
-                        <div class="img-box"><img src="<?php echo ASSETS_ROOT; ?>images/company/3.png" class="img-responsive center-block"
-                                                  alt=""></div>
-                        <div class="content-area">
-                            <div class="">
-                                <h4><a href=""> Netword Administrator </a></h4>
-                                <p> Confidential Int. Pvt. Ltd. Malaysia </p>
-                            </div>
-                            <div class="feature-post-meta"><a href=""> <i class="fa fa-clock-o"></i> 2 days ago</a>
-                                <a href="" class="mata-detail full-time">Full Time</a></div>
-                            <div class="feature-post-meta-bottom"><span>$1500<small>/ month</small></span> <a
-                                        href="" class="apply pull-right"> Apply Now</a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                    <div class="featured-image-box">
-                        <div class="img-box"><img src="<?php echo ASSETS_ROOT; ?>images/company/2.png" class="img-responsive center-block"
-                                                  alt=""></div>
-                        <div class="content-area">
-                            <div class="">
-                                <h4><a href=""> managing director </a></h4>
-                                <p> Kings Int. Pvt. Ltd. Malaysia </p>
-                            </div>
-                            <div class="feature-post-meta"><a href=""> <i class="fa fa-clock-o"></i> 2 days ago</a>
-                                <a href="" class="mata-detail full-time">full Time</a></div>
-                            <div class="feature-post-meta-bottom"><span>$2500<small>/ month</small></span> <a
-                                        href="" class="apply pull-right"> Apply Now</a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                    <div class="featured-image-box">
-                        <div class="img-box"><img src="<?php echo ASSETS_ROOT; ?>images/company/5.png" class="img-responsive center-block"
-                                                  alt=""></div>
-                        <div class="content-area">
-                            <div class="">
-                                <h4><a href=""> 54/A Ready Flat in Miami Beach </a></h4>
-                                <p> Confidential Int. Pvt. Ltd. Malaysia </p>
-                            </div>
-                            <div class="feature-post-meta"><a href=""> <i class="fa fa-clock-o"></i> 2 days ago</a>
-                                <a href="" class="mata-detail remote">Freelancer</a></div>
-                            <div class="feature-post-meta-bottom"><span>$500<small>/ month</small></span> <a href=""
-                                                                                                             class="apply pull-right">
-                                    Apply Now</a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                    <div class="featured-image-box">
-                        <div class="img-box"><img src="<?php echo ASSETS_ROOT; ?>images/company/3.png" class="img-responsive center-block"
-                                                  alt=""></div>
-                        <div class="content-area">
-                            <div class="">
-                                <h4><a href=""> Documentation Expert </a></h4>
-                                <p> XCosdo Int. Pvt. Ltd. Malaysia </p>
-                            </div>
-                            <div class="feature-post-meta"><a href=""> <i class="fa fa-clock-o"></i> 10 days ago</a>
-                                <a href="" class="mata-detail intern">Intern</a></div>
-                            <div class="feature-post-meta-bottom"><span>$400<small>/ month</small></span> <a href=""
-                                                                                                             class="apply pull-right">
-                                    Apply Now</a></div>
-                        </div>
-                    </div>
-                </div>
+                <?php } ?>
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="load-more-btn">
                         <button class="btn-default"> View All <i class="fa fa-angle-right"></i></button>

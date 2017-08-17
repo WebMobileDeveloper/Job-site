@@ -16,6 +16,7 @@ class Home extends Front_Controller {
             }
         }
         $data['postData']=$this->PostModel->getAllPost();
+        $data['featuredPosts']=$this->PostModel->getAllFeaturedPost();
         $this->front_showpage('home',$data);
     }
 
@@ -47,9 +48,6 @@ class Home extends Front_Controller {
         $data['client_info'] = $this->UserModel->getClientDetail($client_id,'education');
         $this->front_showpage('front_common/userPostDetail', $data);
     }
-
-
-
 
 
     public function sellerDashboard($selectedMenu=''){

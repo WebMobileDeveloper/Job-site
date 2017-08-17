@@ -30,7 +30,7 @@ function initMenu() {
         function() {
                 $(this).addClass('active');
                 $(this).children("ul").css('display','block');
-                $(this).find("ul> li[sub-menu='"+sub_menu+"'] a").css('color','#05fb81cc');
+                $(this).find("ul> li[sub-menu='"+sub_menu+"'] a").css('color','#05fb81');
         }
     );
 }

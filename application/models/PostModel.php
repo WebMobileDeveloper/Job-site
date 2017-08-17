@@ -38,6 +38,35 @@ class PostModel extends CI_Model
         $result['property'] = $this->db->get()->result();
         return $result;
     }
+    function getAllFeaturedPost()
+    {
+        $this->db->select('*');
+        //$this->db->where('tbl_post.post_type', 'job');
+        $this->db->where('tbl_post.featured', 1);
+        $this->db->from('tbl_post');
+        $this->db->join('tbl_users_data', 'tbl_users_data.user_id = tbl_post.user_id and tbl_users_data.company_type=tbl_post.post_type');
+        $this->db->order_by('tbl_post.posted_date desc');
+        //$this->db->limit(2);
+        //$result['job'] = $this->db->get()->result();
+        $result = $this->db->get()->result();
+
+        /*$this->db->select('*');
+        $this->db->where('tbl_post.post_type', 'education');
+        $this->db->where('tbl_post.featured', 1);
+        $this->db->from('tbl_post');
+        $this->db->join('tbl_users_data', 'tbl_users_data.user_id = tbl_post.user_id and tbl_users_data.company_type=tbl_post.post_type');
+        $this->db->limit(2);
+        $result['education'] = $this->db->get()->result();
+
+        $this->db->select('*');
+        $this->db->where('tbl_post.post_type', 'property');
+        $this->db->where('tbl_post.featured', 1);
+        $this->db->from('tbl_post');
+        $this->db->join('tbl_users_data', 'tbl_users_data.user_id = tbl_post.user_id and tbl_users_data.company_type=tbl_post.post_type');
+        $this->db->limit(2);
+        $result['property'] = $this->db->get()->result();*/
+        return $result;
+    }
 
     function getPostsInfo()
     {

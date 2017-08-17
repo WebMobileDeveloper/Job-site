@@ -13,58 +13,67 @@ class Home extends Admin_Controller
             redirect("admin/auth");
         }
         $this->load->model('AdminModel');
+        $this->data['top_menu']='';
+        $this->data['selected_menu']='';
     }
 
     public function index()
     {
-        $data['menu'] = 'dashboard';
-        $data['userCounts'] = $this->AdminModel->getUserCount();
-        $data['postCounts'] = $this->AdminModel->getPostCount();
-        $this->admin_showpage('admin/home', $data);
+        $this->data['top_menu']='Dashboard';
+        $this->data['selected_menu'] = 'dashboard';
+        $this->data['userCounts'] = $this->AdminModel->getUserCount();
+        $this->data['postCounts'] = $this->AdminModel->getPostCount();
+        $this->admin_showpage('admin/home', $this->data);
 
     }
 
     public function edit()
     {
-        $data['menu'] = 'edit';
-        $this->admin_showpage('admin/home', $data);
+        $this->data['top_menu']='Dashboard';
+        $this->data['selected_menu'] = 'edit';
+        $this->admin_showpage('admin/home', $this->data);
     }
 
-    public function payment()
-    {
-        $data['menu'] = 'payment';
-        $data['sellers'] = $this->AdminModel->getSellers();
-        $this->admin_showpage('admin/home', $data);
-    }
 
     public function sellers()
     {
-        $data['menu'] = 'sellers';
-        $data['sellers'] = $this->AdminModel->getSellers();
-        $this->admin_showpage('admin/home', $data);
+        $this->data['top_menu']='Users';
+        $this->data['selected_menu'] = 'sellers';
+        $this->data['sellers'] = $this->AdminModel->getSellers();
+        $this->admin_showpage('admin/home', $this->data);
     }
 
     public function customers()
     {
-        $data['menu'] = 'customers';
-        $data['customers'] = $this->AdminModel->getCustomers();
-        $this->admin_showpage('admin/home', $data);
+        $this->data['top_menu']='Users';
+        $this->data['selected_menu'] = 'customers';
+        $this->data['customers'] = $this->AdminModel->getCustomers();
+        $this->admin_showpage('admin/home', $this->data);
     }
 
     public function allPosts()
     {
-        $data['menu'] = 'allPosts';
-        $data['posts'] = $this->AdminModel->getPosts();
-        $this->admin_showpage('admin/home', $data);
+        $this->data['top_menu']='Posts';
+        $this->data['selected_menu'] = 'allPosts';
+        $this->data['posts'] = $this->AdminModel->getPosts();
+        $this->admin_showpage('admin/home', $this->data);
     }
 
     public function featuredPosts()
     {
-        $data['menu'] = 'featuredPosts';
-        $data['posts'] = $this->AdminModel->getFeaturedPosts();
-        $this->admin_showpage('admin/home', $data);
+        $this->data['top_menu']='Posts';
+        $this->data['selected_menu'] = 'featuredPosts';
+        $this->data['posts'] = $this->AdminModel->getFeaturedPosts();
+        $this->admin_showpage('admin/home', $this->data);
     }
 
+    public function payment()
+    {
+        $this->data['top_menu']='Payment';
+        $this->data['selected_menu'] = 'payment';
+        $this->data['sellers'] = $this->AdminModel->getSellers();
+        $this->admin_showpage('admin/home', $this->data);
+    }
     public function approve()
     {
         $result = $this->AdminModel->approve($_POST['user_data_id'], $_POST['value']);

@@ -160,7 +160,7 @@
     });
 </script>
 <!-- CK-EDITOR -->
-<script src="http://cdn.ckeditor.com/4.5.10/standard/ckeditor.js"></script>
+<script src="<?php echo ASSETS_ROOT; ?>ckeditor/ckeditor.js"></script>
 <link rel="stylesheet" href="<?php echo ASSETS_ROOT;?>css/jquery.tagsinput.min.css">
 
 <!-- FOR THIS PAGE ONLY -->
