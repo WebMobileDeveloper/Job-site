@@ -96,6 +96,16 @@ class AdminModel extends CI_Model
         $result=$this->db->get()->result()[0];
         return $result;
     }
+
+    function getPaymentData($id){
+        $data=array();
+        $this->db->from('tbl_users');
+        $this->db->where('usertype','seller');
+        $this->db->where('id',$id);
+        $result=$this->db->get()->result()[0];
+        return $result;
+    }
+
     function savePayment($id, $payment_method,$bank,$package,$slip_name,$note){
         $this->db->where('id',$id);
         $this->db->set('payment_method',$payment_method);
@@ -105,27 +115,6 @@ class AdminModel extends CI_Model
         $this->db->set('note',$note);
         $this->db->update('tbl_users');
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     function  approve($user_data_id,$value){

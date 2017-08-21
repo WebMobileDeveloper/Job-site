@@ -51,7 +51,9 @@
                 }
             });
         });
-        $('#example').DataTable();
+        $('#example').DataTable({
+            responsive: true
+        });
 
     });
 </script>

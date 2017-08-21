@@ -167,7 +167,9 @@
         $("#payment-form").submit(function (e) {
             e.preventDefault();
         });
-        var table = $('#example').DataTable();
+        var table = $('#example').DataTable({
+            responsive: true
+        });
 
         table.on('draw', function () {
             var body = $(table.table().body());

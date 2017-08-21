@@ -29,7 +29,6 @@
 
     <!-- TEMPLATE CORE CSS -->
     <link rel="stylesheet" href="<?php echo ASSETS_ROOT; ?>css/style.css">
-    <link rel="stylesheet" href="<?php echo ASSETS_ROOT; ?>css/admin.css">
 
     <!-- FONT AWESOME -->
     <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_ROOT; ?>css/font-awesome.min.css">
@@ -44,6 +43,7 @@
 
 
     <link rel="stylesheet" href="<?php echo ASSETS_ROOT; ?>css/sidebar-menu.css">
+    <link rel="stylesheet" href="<?php echo ASSETS_ROOT; ?>css/admin.css">
 
     <!-- JAVASCRIPT JS  -->
     <script type="text/javascript" src="<?php echo ASSETS_ROOT; ?>js/jquery-3.1.1.min.js"></script>
@@ -64,9 +64,15 @@
     <!--data table-->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.dataTables.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.datatables.net/buttons/1.4.0/css/buttons.dataTables.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.datatables.net/select/1.2.2/css/select.dataTables.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo ASSETS_ROOT; ?>css/editor.dataTables.min.css" rel="stylesheet" type="text/css">
 
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="//cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.js"></script>
     <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+
 
 
     <script src="//cdn.datatables.net/plug-ins/1.10.15/features/searchHighlight/dataTables.searchHighlight.min.js"></script>

@@ -4,7 +4,7 @@
     <div class="heading-inner">
         <p class="title">Dashboard</p>
     </div>-->
-    <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-2 col-sm-offset-2">
+    <div class="col-md-6 col-sm-6 col-xs-12">
         <div class="heading-inner">
             <p class="title">total users</p>
         </div>
@@ -13,11 +13,10 @@
             <dd><?php echo $userCounts['seller']; ?></dd>
             <dt>Customers:</dt>
             <dd><?php echo $userCounts['customer']; ?></dd>
-
         </dl>
     </div>
 
-    <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-2 col-sm-offset-2" style="margin-top: 30px;">
+    <div class="col-md-6 col-sm-6 col-xs-12">
         <div class="heading-inner">
             <p class="title">Total Posts</p>
         </div>
