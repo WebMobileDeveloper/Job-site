@@ -52,3 +52,9 @@
 </body>
 
 </html>
+
+<script>
+    $(function () {
+       $("td:has(>a)").addClass("has-button");
+    });
+</script>

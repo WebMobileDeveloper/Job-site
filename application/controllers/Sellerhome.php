@@ -11,13 +11,17 @@ class Sellerhome extends Front_Controller {
     }
 
     public function index() {
-        $user_id = -1;
-        if ($this->login_user_id) {
-            if ($this->login_user_type == 'customer') {
-                $user_id = $this->login_user_id;
-            }
+
+        if (!$this->login_user_id) {
+            redirect('home');
         }
-        //$data['postData']=$this->PostModel->getAllPost();
+        if ($this->login_user_type == 'customer') {
+            redirect('home');
+        }
+
+
+
+
         $this->sellerDashboard();
     }
 
@@ -56,6 +60,8 @@ class Sellerhome extends Front_Controller {
 
     public function sellerDashboard($selectedMenu=''){
         $this->data['client_info'] = $this->UserModel->getClientData($this->login_user_id);
+        $this->load->model('AdminModel');
+        $this->data['paymentData'] = $this->AdminModel->getPaymentDataBySeller($this->login_user_id)[$this->login_user_id]['account'];
         switch ($selectedMenu){
             case '':  //dashboard
                 $this->data['title'] = 'Your Account Infomation';

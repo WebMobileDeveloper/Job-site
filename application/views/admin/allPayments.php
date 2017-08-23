@@ -6,14 +6,17 @@
 
 <div class="job-short-detail">
     <div class="heading-inner">
-        <p class="title">Payment</p>
+        <p class="title">All Payments</p>
     </div>
 
     <table id="example" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
         <thead>
         <tr>
+            <th>Paid Date</th>
             <th>Name</th>
             <th>Email</th>
+            <th>Amount</th>
+            <th>Charged Posts</th>
             <th>Apply Date</th>
             <th>Job<br>Approved</th>
             <th>Education<br>Approved</th>
@@ -33,8 +36,11 @@
             $pro = $seller['property'];
             ?>
             <tr id="<?php echo $acc->id; ?>">
+                <td><?php echo substr($acc->paid_date, 0, 16); ?></td>
                 <td><?php echo $acc->fullname; ?></td>
                 <td><?php echo $acc->email_address; ?></td>
+                <td><?php echo $acc->paid_amount; ?> (  $  )</td>
+                <td><?php echo $acc->charge_count; ?> posts</td>
                 <td><?php echo substr($acc->registered_date, 0, 10); ?></td>
                 <td>
                     <span><?php echo $job->approve_date; ?></span>
@@ -49,11 +55,11 @@
                 <td><?php echo $acc->bank; ?></td>
                 <td><?php
                     if($acc->slip_name!=''){?>
-                        <a class="btn btn-danger" target="_blank" style="font-size: 12px;padding: 2px;" href="<?php echo ASSETS_ROOT; ?>bank_slip/<?php echo $acc->slip_name;?>"> Download </a>
+                        <a class="btn " target="_blank" href="<?php echo ASSETS_ROOT; ?>bank_slip/<?php echo $acc->slip_name;?>"><i class="fa fa-download"></i></a>
                     <?php } ?></td>
                 <td><?php echo $acc->package; ?> days</td>
                 <td>
-                    <a class="edit-payment" detail-data="<?php echo $acc->id; ?>"><i class="fa fa-edit"></i> </a>
+                    <a class="edit-payment" detail-data="<?php echo $acc->payment_id; ?>"><i class="fa fa-edit"></i> </a>
                 </td>
             </tr>
         <?php } ?>
@@ -117,6 +123,20 @@
                             </div>
                         </div>
 
+
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                Charge Posts :
+                                <input type="number" class="form-control" name="charge_count" id="charge_count" placeholder="Number of posts to charge">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                Charge Amount  ( $ ):
+                                <input type="number" class="form-control" name="paid_amount" id="paid_amount" placeholder="Money to charge">
+                            </div>
+                        </div>
+
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="form-group">
                                 Package:
@@ -168,12 +188,12 @@
             e.preventDefault();
         });
         var table = $('#example').DataTable({
-            responsive: true
+            responsive: true,
+            "order": [[ 0, "desc" ]],
         });
 
         table.on('draw', function () {
             var body = $(table.table().body());
-
             body.unhighlight();
             body.highlight(table.search());
         });
@@ -181,8 +201,13 @@
             bankName.attr("readonly", !bankName.attr("readonly"));
             bankName.val("");
         });
+
         package.change(function () {
-            special.attr("readonly", !special.attr("readonly"));
+            if(package.val()=='special'){
+                special.attr("readonly", false);
+            }else{
+                special.attr("readonly", true);
+            }
             special.val("");
         });
 
@@ -191,7 +216,7 @@
             seller_id = $(this).attr("detail-data");
             $.ajax({
                 type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-                url: '<?php echo site_url("admin/home/getSellerData"); ?>', // the url where we want to POST
+                url: '<?php echo site_url("admin/home/getPaymentDataByID"); ?>', // the url where we want to POST
                 data: {id: seller_id}, // our data object
                 dataType: 'json', // what type of data do we expect back from the server
                 encode: true
@@ -200,6 +225,8 @@
                     $("#name").val(data.fullname);
                     $("#email").val(data.email_address);
                     $("#payment_method").val(data.payment_method);
+                    $("#paid_amount").val(data.paid_amount);
+                    $("#charge_count").val(data.charge_count);
 
                     if (data.payment_method === 'Bank') {
                         bankName.val(data.bank);
@@ -218,9 +245,8 @@
                         special.val(data.package);
                     }
 
-                    $("#user_id").val(data.id);
+                    $("#user_id").val(data.payment_id);
                     if(data.slip_name!=''){
-                        console.log(data.slip_name);
                         $("#bankslip_txt").val('Already exist uploaded bank slip.');
                     }else{
                         $("#bankslip_txt").val('');
@@ -257,20 +283,6 @@
             if (package_data === 'special') {
                 package_data = special.val();
             }
-            /*$.ajax({
-                type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-                url: '< ?php echo site_url("admin/home/savePayment"); ?>', // the url where we want to POST
-                //data: {id: $("#user_id").val(), payment_method: $("#payment_method").val(), bank: bankName.val(), package: package_data}, // our data object
-                data: $("#job-form").serialize(), // our data object
-                dataType: 'json', // what type of data do we expect back from the server
-                encode: true
-            }).done(function (data) {
-                var tr = $("#" + $("#user_id").val());
-                tr.find("td:nth-child(7)").html($("#payment_method").val());
-                tr.find("td:nth-child(8)").html(bankName.val());
-                tr.find("td:nth-child(9)").html(package_data + " days");
-                $("#payment-modal").modal('hide');
-            });*/
             $("#job-form").submit();
         });
 

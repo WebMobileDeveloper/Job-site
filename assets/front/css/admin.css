@@ -59,3 +59,38 @@ section {
 .job-short-detail dd {
 	width: 50%;
 }
+.table-hover > tbody > tr:hover {
+	background-color: #dffbd6 !important;
+}
+td a{
+	font-size:20px;
+	color: #363636;
+}
+td.has-button{
+	padding-top: 2px !important;
+	padding-bottom: 2px !important;
+}
+.apply-job-modal textarea {
+	background-color: #FFF !important;
+}
+.seller-info{
+	font-size:17px;
+	font-weight: 400;
+	margin-bottom: 50px;
+	padding-bottom: 20px;
+	border-bottom: double 1px;
+}
+.seller-info span{
+	font-size:13px;
+	margin-right:10px;
+}
+.seller-info label{
+	margin-left: 20px;
+	margin-right: 20px;
+}
+.heading-inner button{
+	background-color: #dadada;
+	float: right;
+	margin-right: 30px;
+	margin-top: 12px;
+}

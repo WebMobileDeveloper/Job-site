@@ -259,6 +259,7 @@
 
 <script>
     var permit = {};
+
     permit['job'] = '<?php echo $this->login_user_job_permit; ?>';
     permit['education'] = '<?php echo $this->login_user_education_permit; ?>';
     permit['property'] = '<?php echo $this->login_user_property_permit; ?>';
@@ -272,7 +273,6 @@
     var action = " <?php echo (isset($post_detail)) ? site_url($post_detail->post_type . '/post/apply_post') : ''; ?>";
 
     $(function () {
-
         $("a.post").click(function (e) {
             if (permit[$(this).attr('type')] == 'Non Approved') {
                 $("#alertTitle").html("Do you want to post a " + $(this).attr('type') + "?");
@@ -296,7 +296,7 @@
                     return false;
                 }
             } else {
-                alert("Sorry, you can apply after login. \n\n  At first login please.");
+                location.href="<?php echo site_url('auth'); ?>";
                 return false;
             }
             $("#modalName").val(login_user_fullname);

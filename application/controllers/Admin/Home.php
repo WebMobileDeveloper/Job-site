@@ -70,8 +70,23 @@ class Home extends Admin_Controller
     public function payment()
     {
         $this->data['top_menu']='Payment';
-        $this->data['selected_menu'] = 'payment';
-        $this->data['sellers'] = $this->AdminModel->getSellers();
+        $this->data['selected_menu'] = 'allPayments';
+        $this->data['sellers'] = $this->AdminModel->getPaymentData();
+        $this->admin_showpage('admin/home', $this->data);
+    }
+    public function paymentsBySeller()
+    {
+        $this->data['top_menu']='Payment';
+        $this->data['selected_menu'] = 'paymentsBySeller';
+        $this->data['sellers'] = $this->AdminModel->getPaymentDataBySeller();
+        $this->admin_showpage('admin/home', $this->data);
+    }
+    public function sellerPayments($seller_id)
+    {
+        $this->data['top_menu']='Payment';
+        $this->data['selected_menu'] = 'sellerPayments';
+        $this->data['sellers'] = $this->AdminModel->getPaymentDataBySeller($seller_id);
+        $this->data['seller_id'] = $seller_id;
         $this->admin_showpage('admin/home', $this->data);
     }
     public function approve()
@@ -86,6 +101,11 @@ class Home extends Admin_Controller
         die(json_encode($result));
     }
 
+    public function getPaymentDataByID()
+    {
+        $result = $this->AdminModel->getPaymentDataByID($_POST['id']);
+        die(json_encode($result));
+    }
     public function getSellerData()
     {
         $result = $this->AdminModel->getSellerData($_POST['id']);
@@ -102,8 +122,28 @@ class Home extends Admin_Controller
             $target_file = $target_dir . $slip_name;
             move_uploaded_file($_FILES['slip']["tmp_name"], $target_file);
         }
-        $result = $this->AdminModel->savePayment($_POST['id'], $_POST['payment_method'], $_POST['bank_name'], $_POST['package'],$slip_name,$_POST['note']);
+        $result = $this->AdminModel->savePayment($_POST['id'], $_POST['payment_method'], $_POST['bank_name'], $_POST['package'],$slip_name,$_POST['note']
+            ,$_POST['paid_amount'],$_POST['charge_count']);
         //die(json_encode($result));
         redirect(site_url('admin/home/payment'));
+    }
+    public function addPayment($personal=0)
+    {
+        $slip_name='';
+        if ($_FILES['slip']["tmp_name"] != '') {
+            $slip_name= "." . $_POST['modalExt'];
+        }
+        $result = $this->AdminModel->addPayment($_POST['id'], $_POST['payment_method'], $_POST['bank_name'], $_POST['package'],$slip_name,$_POST['note']
+            ,$_POST['paid_amount'],$_POST['charge_count']);
+        if ($_FILES['slip']["tmp_name"] != '') {
+            $target_dir = APPPATH . "../assets/front/bank_slip/";
+            $target_file = $target_dir . $result;
+            move_uploaded_file($_FILES['slip']["tmp_name"], $target_file);
+        }
+        if($personal=1){
+            redirect(site_url('admin/home/sellerPayments/'.$_POST['id']));
+        }else {
+            redirect(site_url('admin/home/paymentsBySeller'));
+        }
     }
 }

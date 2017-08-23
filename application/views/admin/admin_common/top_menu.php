@@ -12,7 +12,7 @@
     <link rel="icon" href="<?php echo ASSETS_ROOT; ?>images/favicon.ico" type="image/x-icon">
 
     <!-- BOOTSTRAPE STYLESHEET CSS FILES -->
-    <link rel="stylesheet" href="<?php echo ASSETS_ROOT; ?>css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="<?php /*echo ASSETS_ROOT; */?>css/bootstrap.min.css">-->
 
     <!-- JQUERY SELECT -->
     <link href="<?php echo ASSETS_ROOT; ?>css/select2.min.css" rel="stylesheet"/>
@@ -70,14 +70,14 @@
     <link href="<?php echo ASSETS_ROOT; ?>css/editor.dataTables.min.css" rel="stylesheet" type="text/css">
 
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-    <script src="//cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.js"></script>
     <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
 
 
 
-    <script src="//cdn.datatables.net/plug-ins/1.10.15/features/searchHighlight/dataTables.searchHighlight.min.js"></script>
-    <link href="//cdn.datatables.net/plug-ins/1.10.15/features/searchHighlight/dataTables.searchHighlight.css"  rel="stylesheet" type="text/css">
-    <script src="//bartaz.github.io/sandbox.js/jquery.highlight.js"></script>
+    <script src="https://cdn.datatables.net/plug-ins/1.10.15/features/searchHighlight/dataTables.searchHighlight.min.js"></script>
+    <link href="https://cdn.datatables.net/plug-ins/1.10.15/features/searchHighlight/dataTables.searchHighlight.css"  rel="stylesheet" type="text/css">
+    <script src="https://bartaz.github.io/sandbox.js/jquery.highlight.js"></script>
 
 </head>
 <script>
@@ -138,8 +138,11 @@
                     </ul>
                 </li>
                 <li top-menu="Payment">
-                    <a href="<?php echo site_url('admin/home/payment'); ?>"><span class="fa-stack fa-lg pull-left"><i class="fa fa-dollar fa-stack-1x "></i></span> <label>Payment</label></a>
-
+                    <a href=""><span class="fa-stack fa-lg pull-left"><i class="fa fa-dollar fa-stack-1x "></i></span> <label>Payment</label></a>
+                    <ul class="nav-pills nav-stacked" style="list-style-type:none;">
+                        <li sub-menu="allPayments"><a href="<?php echo site_url('admin/home/payment'); ?>"><i class="fa fa-pencil-square-o"></i> All Payments</a></li>
+                        <li sub-menu="paymentsBySeller"><a href="<?php echo site_url('admin/home/paymentsBySeller'); ?>"><i class="fa fa-trophy"></i> By Seller</a></li>
+                    </ul>
                 </li>
                 <!--
                 <li>

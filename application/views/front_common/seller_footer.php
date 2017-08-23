@@ -131,9 +131,10 @@
 
 <script type="text/javascript" src="<?php echo ASSETS_ROOT; ?>js/custom.js"></script>
 
-
 <script>
     var permit = {};
+    var available=<?php echo $paymentData->charged_posts-$paymentData->posts; ?>;
+
     permit['job'] = '<?php echo $this->login_user_job_permit; ?>';
     permit['education'] = '<?php echo $this->login_user_education_permit; ?>';
     permit['property'] = '<?php echo $this->login_user_property_permit; ?>';
@@ -153,6 +154,14 @@
                 $("#alertTitle").html("Do you want to post a " + $(this).attr('type') + "?");
                 $("#alertContent").html("<br><br> Sorry, You haven't got permission for the " + $(this).attr('type') + " post yet." +
                     "<br><br>   Please contact administrator for permission.<br><br>");
+
+                $("#alertModal").modal();
+                e.preventDefault();
+            }else if(available<1){
+                alert(available)
+                $("#alertTitle").html("Do you want to post a " + $(this).attr('type') + "?");
+                $("#alertContent").html("<br><br> Sorry, You can't post a " + $(this).attr('type') + "." +
+                    "<br><br> You must pay before post a "+$(this).attr('type')+",  Please contact administrator for payment.<br><br>");
 
                 $("#alertModal").modal();
                 e.preventDefault();

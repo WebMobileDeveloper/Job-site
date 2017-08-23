@@ -1,4 +1,6 @@
 
+
+
 <div class="col-md-8 col-sm-8 col-xs-12">
     <div class="job-short-detail">
         <div class="heading-inner">
@@ -22,6 +24,41 @@
 
             <dt>Address:</dt>
             <dd><?php echo $client_info->accountAddress; ?></dd>
+
+            <dt>Charged Count:</dt>
+            <dd><?php echo $paymentData->charged_counts; ?> times</dd>
+
+            <dt>Total Paid:</dt>
+            <dd>$ <?php echo $paymentData->paid_amount; ?></dd>
+
+            <dt>Charged Posts:</dt>
+            <dd><?php echo $paymentData->charged_posts; ?> P</dd>
+
+            <dt>Total Posts:</dt>
+            <dd><?php echo $paymentData->posts; ?> P</dd>
+            <?php $available=$paymentData->charged_posts-$paymentData->posts; ?>
+            <dt>Available Posts:</dt>
+            <dd style="font-weight: bold; color: <?php
+                        if($available<5){
+                            echo 'red';
+                        }elseif($available<10){
+                            echo 'blue';
+                        }else{
+                            echo '#01c801';
+                        }
+
+                        ?>"><?php echo $available; ?> P &emsp;
+                <?php
+                if($available<5){
+                    echo 'Bad!';
+                }elseif($available<10){
+                    echo 'Good!';
+                }else{
+                    echo 'Very good!';
+                }
+
+                ?>
+            </dd>
 
             <dt>Registered Date:</dt>
             <dd> <?php echo substr($client_info->registered_date,0,10); ?></dd>

@@ -18,6 +18,8 @@ class Post extends Front_Controller
         if (!$this->login_user_id) {
             redirect("auth");
         }
+        $this->load->model('AdminModel');
+        $this->data['paymentData'] = $this->AdminModel->getPaymentDataBySeller($this->login_user_id)[$this->login_user_id]['account'];
         $this->data['selected_menu']='Post';
         $this->seller_showpage('job/post',$this->data);
         $this->load->view('job/postjs');

@@ -9,10 +9,10 @@ class Home extends Front_Controller {
     }
 
     public function index() {
-        $user_id = -1;
+
         if ($this->login_user_id) {
-            if ($this->login_user_type == 'customer') {
-                $user_id = $this->login_user_id;
+            if ($this->login_user_type == 'seller') {
+                redirect('sellerhome');
             }
         }
         $data['postData']=$this->PostModel->getAllPost();

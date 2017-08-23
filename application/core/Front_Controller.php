@@ -61,8 +61,6 @@ class Front_Controller extends CI_Controller
         $this->login_user_property_permit = $this->session->userdata('login_user_property_permit');
         $this->login_user_customer_permit = $this->session->userdata('login_user_customer_permit');
         $this->login_user_fullname = $this->session->userdata('login_user_fullname');
-
-
     }
 
 

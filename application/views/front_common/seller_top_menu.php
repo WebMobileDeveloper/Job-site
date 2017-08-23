@@ -64,6 +64,41 @@
     var sub_menu="<?php echo $selected_menu;?>";
 
 </script>
+<style>
+
+    #page-content-wrapper {
+        padding: 0px;
+    }
+    .job-breadcrumb {
+        padding: 7px 0px 0px 0px;
+    }
+
+    .job-breadcrumb h3{
+        margin: 7px 40px;
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: 15px;
+    }
+    .navbar-header .img-responsive{
+        margin-left: -40px;
+    }
+    .navbar-nav > li {
+        margin-left: -50px;
+    }
+
+    .navbar-default {
+        margin-bottom: 3px !important;
+        max-height: 67px;
+    }
+    .login-header-btn{
+        margin-top:10px;
+    }
+
+    section {
+        padding: 50px 10px;
+    }
+
+</style>
 <body>
 <div class="page">
     <div id="spinner">
